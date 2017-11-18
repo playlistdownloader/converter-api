@@ -1,0 +1,8 @@
+/vendor/
+!cache/index.php
+/cache/*
+logs/*.log
+*.exe
+errors.log
+test.php
+~/
