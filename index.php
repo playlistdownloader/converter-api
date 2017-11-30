@@ -14,7 +14,7 @@ $klein = new \Klein\Klein();
 $klein->respond('GET', '/', function () {
 	$res = array(
 	            "Name" => "Playlist-Converter API",
-	            "Version" => "V1",
+	            "Version" => "V2",
 	            "Author" => "Stormix - Anas Mazouni",
 	            "App Version" => "2.0.1"
 	        );

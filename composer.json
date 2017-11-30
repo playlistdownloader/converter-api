@@ -19,6 +19,7 @@
         "phpmailer/phpmailer": "^5.2",
         "klein/klein": "^2.1",
         "fkooman/json": "^2.0",
-        "firebase/php-jwt": "^5.0"
+        "firebase/php-jwt": "^5.0",
+        "google/apiclient": "^2.2"
     }
 }

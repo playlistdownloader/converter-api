@@ -15,7 +15,7 @@ class Validator
 {
     static protected $youtube_vid_reg = "~(?:http|https|)(?::\/\/|)(?:www.|)(?:youtu\.be\/|youtube\.com(?:\/embed\/|\/v\/|\/watch\?v=|\/ytscreeningroom\?v=|\/feeds\/api\/videos\/|\/user\S*[^\w\-\s]|\S*[^\w\-\s]))([\w\-]{11,})[a-z0-9;:@#?&%=+\/\$_.-]*~i";
     static protected $youtube_playlist_reg = '~(?:http|https|)(?::\/\/|)(?:www.|)(?:youtu\.be\/|youtube\.com(?:\/embed\/|\/v\/|\/watch\?v=|\/ytscreeningroom\?v=|\/feeds\/api\/videos\/|\/user\S*[^\w\-\s]|\S*[^\w\-\s]))([\w\-]{12,})[a-z0-9;:@#?&%=+\/\$_.-]*~i';
-    static protected $deezer_playlist_reg = "/^https?:\/\/(?:www\.)?deezer\.com\/(track|album|playlist)\/(\d+)$/";
+    static protected $deezer_playlist_reg = '/^https?:\/\/(?:www\.)?deezer\.com\/*\/(track|album|playlist)\/(\d+)$/';
     static function isValidLink($url){
         if (filter_var($url, FILTER_VALIDATE_URL) === FALSE) {
             return False;

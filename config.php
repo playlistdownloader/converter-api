@@ -28,7 +28,7 @@ $demo = $_ENV['DEMO'] === 'true'? true: false;
 $whoops = new Whoops\Run();
 // Set Whoops as the default error and exception handler used by PHP:
 $whoops->register();
-$whoops->pushHandler(new Whoops\Handler\PrettyPageHandler());
+$whoops->pushHandler(new Whoops\Handler\JsonResponseHandler());
 error_reporting(E_ALL);
 
 /*
