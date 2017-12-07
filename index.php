@@ -21,5 +21,6 @@ $klein->respond('GET', '/', function () {
     return Json::encode($res) . PHP_EOL;
 });
 $klein->with("/v2", "controllers/ApiControllerV2.php");
+$klein->with("/download", "controllers/DownloadController.php");
 $klein->dispatch();
 ?>

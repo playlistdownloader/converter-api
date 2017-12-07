@@ -202,7 +202,7 @@ function searchVideo($title,$max=0){
             ));
             if(!is_null($searchResponse['items']) && array_key_exists(0,$searchResponse['items'])){
                 $searchResult = $searchResponse['items'][0];
-                $videoIds[] = encrypt($searchResult['id']['videoId'],$_ENV['ENCRYPT_KEY']);
+                $videoIds[] =$searchResult['id']['videoId'];
             }
         }
         return $videoIds;
@@ -217,13 +217,13 @@ function searchVideo($title,$max=0){
             'maxResults' => "1",
         ));
         $searchResult = $searchResponse['items'][0];
-        $videoId = encrypt($searchResult['id']['videoId'],$_ENV['ENCRYPT_KEY']);
+        $videoId = $searchResult['id']['videoId'];
         return [$videoId];
     }
 }
-function parseDeezerID($url){
-    global $deezer_playlist_reg;
+
+function parseDeezerID($url,$deezer_playlist_reg){
     preg_match($deezer_playlist_reg, $url, $match);
-    return $match[2];
+    return $match[1];
 }
 ?>

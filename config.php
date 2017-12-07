@@ -22,7 +22,7 @@ $logger->pushHandler($stream);
 //$client = new Raven_Client('');
 //$client->install();
 
-$demo = $_ENV['DEMO'] === 'true'? true: false;
+$demo   = $_ENV['DEMO'] === 'true'? true: false;
 
 // Whoops error handling
 $whoops = new Whoops\Run();
@@ -39,10 +39,12 @@ error_reporting(E_ALL);
 
 $config = [
             "title" => "",
-            "version" => "1.".rand(0,9).".".rand(0,9),
+            "version" => "1.".rand(0, 9).".".rand(0, 9),
             "demo" => $_ENV['DEMO'] === 'true'? true: false,
-            "menu"=> [
-                        ['/','Home'],
+            "menu" => [
+                    ['/','Home'],
                     ],
-            ];
-?>
+            "api" => [
+                "keyLength" => 32
+            ]
+        ];
