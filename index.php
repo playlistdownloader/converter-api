@@ -14,12 +14,13 @@ $klein = new \Klein\Klein();
 $klein->respond('GET', '/', function () {
 	$res = array(
 	            "Name" => "Playlist-Converter API",
-	            "Version" => "V1",
+	            "Version" => "V2",
 	            "Author" => "Stormix - Anas Mazouni",
 	            "App Version" => "2.0.1"
 	        );
     return Json::encode($res) . PHP_EOL;
 });
 $klein->with("/v2", "controllers/ApiControllerV2.php");
+$klein->with("/download", "controllers/DownloadController.php");
 $klein->dispatch();
 ?>

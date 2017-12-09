@@ -6,3 +6,4 @@ logs/*.log
 errors.log
 test.php
 ~/
+.env

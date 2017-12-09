@@ -32,7 +32,7 @@ class Video
 	public function setVideoInfo(){
 		global $_ENV;
 		$videoInfo = $this->getYDL();
-		$this->id = \Tools\Hash::encrypt($videoInfo['display_id']);
+		$this->id = \Tools\Hash::encrypt($videoInfo['webpage_url']);
 		$this->source = $videoInfo['extractor_key'];
 		$this->link = $videoInfo['webpage_url'];
 		$this->title = $videoInfo['title'];
@@ -56,7 +56,7 @@ class Video
 			$this->setVideoInfo();
 		}
 		return [
-		            "id" => $this->id,
+		            "download_id" => $this->id,
 	                "source" => $this->source,
 	                "link" => $this->link,
 	                "title" => $this->title,
