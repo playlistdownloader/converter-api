@@ -1,28 +1,14 @@
 <?php
 
-function generate_response($payload,$status,$code = NULL,$message = Null){
-	/*
-	 * Jsend API Standards :
-	 *  {
-	 *      status : "fail",
-	 *      data : {
-	 *          code : 123,
-	 *          message : "Something is required!"
-	 *      }
-	 *  }
-	 *  {
-	 *      status : "error",
-	 *      code : 123,
-	 *      message : "An error occured!"
-	 *
-	 *  }
-	 */
+function generate_response($payload,$status,$code = NULL,$message = Null,$id=NULL){
+
 	$code = $code ? $code : 000;
 	$message = $message ? $message : "No message provided";
 	switch($status){
 		case "success":
 			return [
 		        "status" => "success",
+				"download_id" => $id,
 		        "data" => $payload
 		    ];
 			break;
@@ -79,7 +65,7 @@ function getPlaylistID($url){
 }
 function getDBVideoInfo($hash){
     global $pdo;
-    $sql = 'SELECT * FROM videos WHERE response_id = ? LIMIT 1';
+    $sql = 'SELECT * FROM downloads WHERE response_id = ? LIMIT 1';
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$hash]);
     $row = $stmt->fetch();
@@ -161,22 +147,13 @@ function getPlaylistVideos($url){
             $videos = [];
             if(count($PlaylistVideos > 0)){
                 foreach($PlaylistVideos as $videoID){
-                    $videos[] = $videoID;
+                    $videos[] = "https://www.youtube.com/watch?v=".$videoID;
                 }
-                // Add playlist videos to database
-                $stmt = $pdo->prepare("INSERT INTO playlists(playlist_id, videos, timestamp)
-                    VALUES(:playlist_id, :videos, :time)");
-                $stmt->execute(array(
-                    "playlist_id" => $playlistID,
-                    "videos" => serialize($videos),
-                    "time" => time()
-                ));
-                    //$mem->set($playlistID, $videos,$_ENV['CACHE_TIME']*60) or die("Couldn't save anything to memcached...");
                     return $videos;
-                }else{
-                    //$mem->set($playlistID, $PlaylistVideos,$_ENV['CACHE_TIME']*60) or die("Couldn't save anything to memcached...");
-                    return $PlaylistVideos;
-                }
+            }else{
+                //$mem->set($playlistID, $PlaylistVideos,$_ENV['CACHE_TIME']*60) or die("Couldn't save anything to memcached...");
+                return "https://www.youtube.com/watch?v=".$PlaylistVideos;
+            }
 
         }
     //}
@@ -202,7 +179,7 @@ function searchVideo($title,$max=0){
             ));
             if(!is_null($searchResponse['items']) && array_key_exists(0,$searchResponse['items'])){
                 $searchResult = $searchResponse['items'][0];
-                $videoIds[] =$searchResult['id']['videoId'];
+                $videoIds[] = "https://www.youtube.com/watch?v=".$searchResult['id']['videoId'];
             }
         }
         return $videoIds;
@@ -217,7 +194,7 @@ function searchVideo($title,$max=0){
             'maxResults' => "1",
         ));
         $searchResult = $searchResponse['items'][0];
-        $videoId = $searchResult['id']['videoId'];
+        $videoId = "https://www.youtube.com/watch?v=".$searchResult['id']['videoId'];
         return [$videoId];
     }
 }
@@ -226,4 +203,37 @@ function parseDeezerID($url,$deezer_playlist_reg){
     preg_match($deezer_playlist_reg, $url, $match);
     return $match[1];
 }
+
+function storePlaylistDownloads($id,$downloads){
+	global $pdo;
+	$data = serialize($downloads);
+	try {
+		// Add response to database
+		$stmt = $pdo->prepare("INSERT INTO playlists(playlist_id, downloads, timestamp)
+		VALUES(:hash, :downloads, :time)");
+		$stmt->execute(array(
+		"hash" => $id,
+		"downloads" => $data,
+		"time" => time()
+	));
+	} catch (PDOException $ex) {
+		// Re-throw exception if it wasn't a constraint violation.
+		if ($ex->getCode() != 23000) {
+			return \fkooman\Json\Json::encode(generate_response([], "error", "PDO", "Something went wrong, please contact the administrator.")) . PHP_EOL;
+		}
+	}
+}
+function fetchPlaylistDownloads($id){
+	global $pdo;
+    $sql = 'SELECT * FROM playlists WHERE playlist_id = ? LIMIT 1';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$id]);
+    $row = $stmt->fetch();
+    if(!$row){
+        return False;
+    }else{
+        return $row;
+    }
+}
+
 ?>

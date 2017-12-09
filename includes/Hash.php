@@ -3,10 +3,12 @@ namespace Tools;
 class Hash
 {
 	static $key;
+	static $length;
 
 	public static function init() {
 		global $_ENV;
 		self::$key = $_ENV['ENCRYPT_KEY'];
+	    self::$length = $_ENV['HASH_LENGTH'];
 	}
 
 	static function encrypt($string) {

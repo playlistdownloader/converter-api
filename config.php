@@ -25,10 +25,10 @@ $logger->pushHandler($stream);
 $demo   = $_ENV['DEMO'] === 'true'? true: false;
 
 // Whoops error handling
-$whoops = new Whoops\Run();
+//$whoops = new Whoops\Run();
 // Set Whoops as the default error and exception handler used by PHP:
-$whoops->register();
-$whoops->pushHandler(new Whoops\Handler\JsonResponseHandler());
+//$whoops->register();
+//$whoops->pushHandler(new Whoops\Handler\JsonResponseHandler());
 error_reporting(E_ALL);
 
 /*

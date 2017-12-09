@@ -8,6 +8,9 @@ use fkooman\Json\Json;
 use fkooman\Json\JsonException;
 use Tools\API;
 
-$this->respond('GET', '/', function ($request, $response) {
-    return "wassup";
+$this->respond('GET', '/[:id]', function ($request, $response, $service) {
+    #Check if ID exists
+    
+        #Check if playlist or single Download
+
 });
