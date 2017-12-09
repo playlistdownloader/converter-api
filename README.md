@@ -6,7 +6,7 @@ A powerful PHP API for media download & conversion (Work in progress)
 ![stability-wip](https://img.shields.io/badge/stability-work_in_progress-lightgrey.svg)
 [![HitCount](http://hits.dwyl.com/stormiix/converter-api.svg)](http://hits.dwyl.com/stormiix/converter-api)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/stormiix/converter-api/issues)
-[![Twitter](https://img.shields.io/twitter/url/https/github.com/Stormiix/converter-api.svg?style=flat)](https://twitter.com/intent/tweet?text=Check this out @Stormiix:&url=https%3A%2F%2Fgithub.com%2FStormiix%2Fconverter-api)
+[![Twitter](https://img.shields.io/twitter/url/https/github.com/Stormiix/converter-api.svg?style=flat)](https://twitter.com/intent/tweet?text=Check%20this%20out%20%40Stormix4:&url=https%3A%2F%2Fgithub.com%2FStormiix%2Fconverter-api)
 
 ## Getting Started
 
