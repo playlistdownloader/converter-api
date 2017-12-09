@@ -1,11 +1,12 @@
 # Converter API - A powerful PHP API for media download & conversion (Work in progress)
 
 One Paragraph of project description goes here
+
 [![GitHub stars](https://img.shields.io/github/stars/Stormiix/converter-api.svg)](https://github.com/Stormiix/converter-api/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/Stormiix/converter-api.svg?style=flat)](https://github.com/Stormiix/converter-api/network)
 ![stability-wip](https://img.shields.io/badge/stability-work_in_progress-lightgrey.svg)
 [![HitCount](http://hits.dwyl.com/stormiix/converter-api.svg)](http://hits.dwyl.com/stormiix/converter-api)
-## Contributing [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/stormiix/converter-api/issues)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/stormiix/converter-api/issues)
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/Stormiix/converter-api.svg?style=flat)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FStormiix%2Fconverter-api)
 
 ## Getting Started
@@ -47,7 +48,7 @@ End with an example of getting some data out of the system or using it for a lit
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Anas Mazouni** - *Initial work* - [Converter-API](https://github.com/stormiix)
 
 See also the list of [contributors](https://github.com/stormiix/converter-api/contributors) who participated in this project.
 
