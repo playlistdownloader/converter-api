@@ -8,9 +8,80 @@ use fkooman\Json\Json;
 use fkooman\Json\JsonException;
 use Tools\API;
 
-$this->respond('GET', '/[:id]', function ($request, $response, $service) {
+$this->respond('GET', '/[:id]/formats', function ($request, $response, $service) {
     #Check if ID exists
-    
-        #Check if playlist or single Download
+    $id = $request->id;
+    $downloadInfo = getDownloadInfo($id);
+    #Check if playlist
+    if(substr($id, 0, 9) === "playlist_" or !$downloadInfo){
+        //$id = substr($id,9);
+        return Json::encode(generate_response([], "fail", "003", "Playlist download is not yet supported!")) . PHP_EOL;
+    }else{
+        #It's not a playlist
+        $downloadInfoData = $downloadInfo['data'];
+        $rawFormats = shell_exec('youtube-dl -F '.$downloadInfoData['webpage_url']);
+        $formatList = array_values(array_filter(preg_split('/$\R?^/m', explode('note',$rawFormats)[1])));
+        $response = [];
+        foreach($formatList as $formatText){
+            $parts = preg_split('/\s+/', $formatText);
+            $formatID = $parts[0];
+            $formatExt = $parts[1];
+            $formatDesc = join(' ',array_slice($parts,2));
+            $response[] = [
+                "format_id" => $formatID,
+                "extention" => $formatExt,
+                "description" => $formatDesc,
+                "download_link" => $_ENV['APP_URL'].$_ENV['VERSION']."/download/".$id."/".$formatID
+            ];
+        }
+        $response[] = [
+            "format_id" => "999",
+            "extention" => "mp3",
+            "description" => "MP3 audio",
+            "download_link" => $_ENV['APP_URL'].$_ENV['VERSION']."/download/".$id."/999"
+        ];
+        return Json::encode($response);
+    }
+});
 
+$this->respond('GET', '/[:id]/[i:format_id]', function ($request, $response, $service) {
+    #Check if ID exists
+    $id = $request->id;
+    $downloadInfo = getDownloadInfo($id);
+    #Check if playlist
+    if(substr($id, 0, 9) === "playlist_" || !$downloadInfo){
+        //$id = substr($id,9);
+        return Json::encode(generate_response([], "fail", "003", "Playlist download is not yet supported!")) . PHP_EOL;
+    }else{
+        #It's not a playlist
+        $downloadInfoData = $downloadInfo['data'];
+        $rawFormats = shell_exec('youtube-dl -F '.$downloadInfoData['webpage_url']);
+        $formatList = array_values(array_filter(preg_split('/$\R?^/m', explode('note',$rawFormats)[1])));
+        $formats = [];
+        if($request->format_id != "999"){
+            foreach($formatList as $formatText){
+                $parts = preg_split('/\s+/', $formatText);
+                $formatID = $parts[0];
+                $formatExt = $parts[1];
+                $formats[$formatID] = $formatExt;
+            }
+        }else{
+            $formats['999'] = "mp3";
+        }
+        
+        if(array_key_exists($request->format_id,$formats) || $request->format_id == "999"){
+            $ext = $formats[$request->format_id];
+            $audio = ($request->format_id == "999" ? true : false);
+            $download_link = downloadFile($downloadInfoData['webpage_url'],$request->format_id,$ext,$audio);
+            $filename = $downloadInfoData['title'];
+            header('X-Accel-Redirect: /' . $download_link);
+            header('Content-Type: '.mime_content_type($download_link));
+            header('Content-length: ' . filesize($_SERVER["DOCUMENT_ROOT"]."/".$download_link));
+            header('Content-Disposition: attachment; filename="'.$filename.".".$ext.'"');
+            header('X-Pad: avoid browser bug');
+            header('Cache-Control: no-cache');
+        }else{
+            return Json::encode(generate_response([], "fail", "004", "Unsupported or Unknown format!")) . PHP_EOL;
+        }
+    }
 });
