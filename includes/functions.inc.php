@@ -235,5 +235,37 @@ function fetchPlaylistDownloads($id){
         return $row;
     }
 }
+function getDownloadInfo($id){
+    global $pdo;
+    $sql = 'SELECT * FROM downloads WHERE response_id = ? LIMIT 1';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$id]);
+    $row = $stmt->fetch();
+    if(!$row){
+        return False;
+    }else{
+        return json_decode($row['response'],true);
+    }
+}
 
+
+function downloadFile($link,$format,$ext,$audio){
+    $id = time();
+    $downloadFolder = $_ENV['DOWNLOAD_FOLDER'];
+    if(!file_exists($downloadFolder)){
+        mkdir($downloadFolder);
+    }
+    $output = $downloadFolder."/".$id."-delete.".$ext;
+    if (file_exists($output)) {
+		return $output;
+	}else {
+        if($audio){
+            $cmd = 'youtube-dl --add-metadata --extract-audio --audio-format mp3  --output '.$downloadFolder.'/"'.$id.'-delete.%(ext)s" '.$link;
+        }else{
+            $cmd = 'youtube-dl -f '.$format.' --output '.$downloadFolder.'/"'.$id.'-delete.%(ext)s" '.$link;
+        }
+		$excecute = shell_exec($cmd);
+		return $output;
+	}
+}
 ?>

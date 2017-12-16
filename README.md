@@ -10,40 +10,46 @@ A powerful PHP API for media download & conversion (Work in progress)
 
 ## Getting Started
 
-xD
+Converter-API is a PHP api that serves as a backend to my website: [PlaylistConverter](https://playlist-converter.me/?github).
+It can be used to create streaming sites "Downloaders/Converters". It uses Youtube-DL to fetch json info about each download such as (Title,description,available formats..etc).
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+In order to use converter-api you must have the following :
 
-```
-Give examples
-```
+- Youtube-DL [Download Here](https://github.com/rg3/youtube-dl/)
+- A Deezer developer API Key
+- A Google API Key
+- That's it :D
 
 ### Installing
 
-A step by step series of examples that tell you have to get a development env running
+1. Clone the repo to your folder.
+2. create a ".env" file to hold your api keys and general configuration:
 
-Say what the step will be
+``` .env
+APP_URL = "https://playlist-converter.me/"
+DOMAIN = "playlist-converter.me"
+ENCRYPT_KEY ="somerandomstringhere"
+DEMO = false
+VERSION = "v2"
+DOWNLOAD_FOLDER = "tmp" #This is the folder where most downloads/conversions happen
 
+DATABASE_NAME=""
+DATABASE_USER=""
+DATABASE_PASS=""
+DATABASE_HOST="localhost"
+
+DEEZER_APP_KEY = "xxxxxx"
+DEEZER_APP_SECRET = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+GOOGLE_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx--xxxxxxx"
 ```
-Give the example
-```
+3. To be continued
 
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Built With
 
-*
-*
-*
-
+* [PHP](http://php.net/)
 
 ## Authors
 
@@ -58,4 +64,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## TODO
 
 - [x] /fetch
-- [ ] /download
+- [x] /download
+- [x] /formats
+- what's next ?

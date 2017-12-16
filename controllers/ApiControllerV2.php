@@ -336,3 +336,5 @@ $this->respond('GET', '/supported', function ($request, $response) {
     $supported = file_get_contents("helpers/supported.json");
     return $supported;
 });
+
+$this->with("/download", "controllers/DownloadController.php");

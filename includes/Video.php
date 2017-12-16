@@ -58,7 +58,8 @@ class Video
 		return [
 		            "download_id" => $this->id,
 	                "source" => $this->source,
-	                "link" => $this->link,
+					"link" => $this->link,
+					"webpage_url" => $this->link,
 	                "title" => $this->title,
 	                "description" => $this->description,
 	                "filename" => $this->filename,
