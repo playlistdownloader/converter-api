@@ -205,7 +205,8 @@ function parseDeezerID($url,$deezer_playlist_reg){
 }
 
 function storePlaylistDownloads($id,$downloads){
-	global $pdo;
+    global $pdo;
+    global $logger;
 	$data = serialize($downloads);
 	try {
 		// Add response to database
@@ -219,6 +220,9 @@ function storePlaylistDownloads($id,$downloads){
 	} catch (PDOException $ex) {
 		// Re-throw exception if it wasn't a constraint violation.
 		if ($ex->getCode() != 23000) {
+            $logger->critical("A PDO Exception was raised inside a function storePlaylistDownloads(id,downloads).",[
+                "Error" =>$e->getMessage(),
+            ]);
 			return \fkooman\Json\Json::encode(generate_response([], "error", "PDO", "Something went wrong, please contact the administrator.")) . PHP_EOL;
 		}
 	}
@@ -244,6 +248,7 @@ function getDownloadInfo($id){
     if(!$row){
         return False;
     }else{
+        incrementUnfinished();
         return json_decode($row['response'],true);
     }
 }
@@ -260,12 +265,132 @@ function downloadFile($link,$format,$ext,$audio){
 		return $output;
 	}else {
         if($audio){
+            incrementConversions();
             $cmd = 'youtube-dl --add-metadata --extract-audio --audio-format mp3  --output '.$downloadFolder.'/"'.$id.'-delete.%(ext)s" '.$link;
         }else{
+            incrementDownloads();
             $cmd = 'youtube-dl -f '.$format.' --output '.$downloadFolder.'/"'.$id.'-delete.%(ext)s" '.$link;
         }
 		$excecute = shell_exec($cmd);
 		return $output;
 	}
 }
+function incrementDownloads(){
+    global $pdo;
+    $sql = "INSERT INTO stats
+            (`downloads`, `conversions`, `unfinished`, `finished`, `period`)
+          VALUES
+            (1, 0, 0, 0, :period)
+          ON DUPLICATE KEY
+            UPDATE `downloads` = `downloads` + 1";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(array(':period' => date('Y-m-d')));
+}
+function incrementUnfinished(){
+    global $pdo;
+    $sql = "INSERT INTO stats
+            (`downloads`, `conversions`, `unfinished`, `finished`, `period`)
+            VALUES
+              (0, 0, 1, 0, :period)
+          ON DUPLICATE KEY
+            UPDATE `unfinished` = `unfinished` + 1";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(array(':period' => date('Y-m-d')));
+}
+function decrementUnfinished(){
+    global $pdo;
+    $sql = "INSERT INTO stats
+            (`downloads`, `conversions`, `unfinished`, `finished`, `period`)
+            VALUES
+              (0, 0, 1, 0, :period)
+          ON DUPLICATE KEY
+            UPDATE `unfinished` = `unfinished` - 1";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(array(':period' => date('Y-m-d')));
+}
+function incrementFinished(){
+    global $pdo;
+    $sql = "INSERT INTO stats
+            (`downloads`, `conversions`, `unfinished`, `finished`, `period`)
+            VALUES
+              (0, 0, 0, 1, :period)
+          ON DUPLICATE KEY
+            UPDATE `finished` = `finished` + 1";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(array(':period' => date('Y-m-d')));
+}
+function incrementConversions(){
+    global $pdo;
+    $sql = "INSERT INTO stats
+            (`downloads`, `conversions`, `unfinished`, `finished`, `period`)
+            VALUES
+              (0, 1, 0, 0, :period)
+            ON DUPLICATE KEY
+                UPDATE `conversions` = `conversions` + 1";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(array(':period' => date('Y-m-d')));
+}
+function updateUsage($size){
+    global $pdo;
+    $sql = "UPDATE stats set `usage` = `usage` + :size WHERE `period` = :period";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(array(':size' => $size,':period' => date('Y-m-d')));
+}
+function incrementYoutubeSource(){
+    global $pdo;
+    $sql = "INSERT INTO stats_sources
+            (`youtube`, `deezer`, `soundcloud`, `period`)
+          VALUES
+            (1, 0, 0, :period)
+          ON DUPLICATE KEY
+            UPDATE `youtube` = `youtube` + 1";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(array(':period' => date('Y-m-d')));
+}
+
+function incrementSoundcloudSource(){
+    global $pdo;
+    $sql = "INSERT INTO stats_sources
+            (`youtube`, `deezer`, `soundcloud`, `period`)
+          VALUES
+            (0, 0, 1, :period)
+          ON DUPLICATE KEY
+            UPDATE `deezer` = `deezer` + 1";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(array(':period' => date('Y-m-d')));
+}
+function incrementDeezerSource(){
+    global $pdo;
+    $sql = "INSERT INTO stats_sources
+            (`youtube`, `deezer`, `soundcloud`, `period`)
+          VALUES
+            (0, 1, 0, :period)
+          ON DUPLICATE KEY
+            UPDATE `soundcloud` = `soundcloud` + 1";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(array(':period' => date('Y-m-d')));
+}
+function incrementOtherSource(){
+    global $pdo;
+    $sql = "INSERT INTO stats_sources
+            (`other`, `period`)
+          VALUES
+            (1, :period)
+          ON DUPLICATE KEY
+            UPDATE `other` = `other` + 1";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(array(':period' => date('Y-m-d')));
+}
+function incrementUnsupportedSource(){
+    global $pdo;
+    $sql = "INSERT INTO stats_sources
+            (`unsupported`, `period`)
+          VALUES
+            (1, :period)
+          ON DUPLICATE KEY
+            UPDATE `unsupported` = `unsupported` + 1";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(array(':period' => date('Y-m-d')));
+}
+
 ?>

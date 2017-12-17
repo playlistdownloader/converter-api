@@ -28,7 +28,14 @@ class API
         if (!$row) {
             return False;
         } else {
+            self::incrementCalls($key,$pdo);
             return true;
         }
+    }
+    public static function incrementCalls($key, $pdo)
+    {
+        $stmt = $pdo->prepare('UPDATE api_keys set calls = calls +1 WHERE api_key=?');
+        $stmt->bindParam(1, $key);
+        $stmt->execute();
     }
 }

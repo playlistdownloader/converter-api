@@ -7,3 +7,5 @@ errors.log
 test.php
 ~/
 .env
+composer.lock
+tmp/*
