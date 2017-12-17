@@ -8,6 +8,9 @@ use fkooman\Json\Json;
 use fkooman\Json\JsonException;
 use Tools\API;
 
+$this->respond('GET','/[:id]/', function ($request, $response, $service) {
+    return Json::encode(generate_response([], "fail", "xxx", "A format must be specified.")) . PHP_EOL;
+});
 $this->respond('GET', '/[:id]/formats', function ($request, $response, $service) {
     #Check if ID exists
     $id = $request->id;
@@ -15,17 +18,18 @@ $this->respond('GET', '/[:id]/formats', function ($request, $response, $service)
     #Check if playlist
     if(substr($id, 0, 9) === "playlist_" or !$downloadInfo){
         //$id = substr($id,9);
-        return Json::encode(generate_response([], "fail", "003", "Playlist download is not yet supported!")) . PHP_EOL;
+        return Json::encode(generate_response([], "fail", "003", "Unknown ID or not yet supported!")) . PHP_EOL;
     }else{
         #It's not a playlist
         $downloadInfoData = $downloadInfo['data'];
-        $rawFormats = shell_exec('youtube-dl -F '.$downloadInfoData['webpage_url']);
-        $formatList = array_values(array_filter(preg_split('/$\R?^/m', explode('note',$rawFormats)[1])));
+        //$rawFormats = shell_exec('youtube-dl -F '.$downloadInfoData['webpage_url']);
+        //$formatList = array_values(array_filter(preg_split('/$\R?^/m', explode('note',$rawFormats)[1])));
+        $formatList = $downloadInfoData['formats'];
         $response = [];
-        foreach($formatList as $formatText){
-            $parts = preg_split('/\s+/', $formatText);
-            $formatID = $parts[0];
-            $formatExt = $parts[1];
+        foreach($formatList as $format){
+            $parts = preg_split('/\s+/', $format['format']);
+            $formatID = $format['format_id'];
+            $formatExt = $format['ext'];
             $formatDesc = join(' ',array_slice($parts,2));
             $response[] = [
                 "format_id" => $formatID,
@@ -51,18 +55,15 @@ $this->respond('GET', '/[:id]/[i:format_id]', function ($request, $response, $se
     #Check if playlist
     if(substr($id, 0, 9) === "playlist_" || !$downloadInfo){
         //$id = substr($id,9);
-        return Json::encode(generate_response([], "fail", "003", "Playlist download is not yet supported!")) . PHP_EOL;
+        return Json::encode(generate_response([], "fail", "003", "Unknown ID or not yet supported!")) . PHP_EOL;
     }else{
         #It's not a playlist
         $downloadInfoData = $downloadInfo['data'];
-        $rawFormats = shell_exec('youtube-dl -F '.$downloadInfoData['webpage_url']);
-        $formatList = array_values(array_filter(preg_split('/$\R?^/m', explode('note',$rawFormats)[1])));
-        $formats = [];
+        // For faster treatement, let's fetch the formats from the database:
         if($request->format_id != "999"){
-            foreach($formatList as $formatText){
-                $parts = preg_split('/\s+/', $formatText);
-                $formatID = $parts[0];
-                $formatExt = $parts[1];
+            foreach($downloadInfoData['formats'] as $format){
+                $formatID = $format['format_id'];
+                $formatExt = $format['ext'];
                 $formats[$formatID] = $formatExt;
             }
         }else{
@@ -74,7 +75,7 @@ $this->respond('GET', '/[:id]/[i:format_id]', function ($request, $response, $se
             $audio = ($request->format_id == "999" ? true : false);
             $download_link = downloadFile($downloadInfoData['webpage_url'],$request->format_id,$ext,$audio);
             $filename = $downloadInfoData['title'];
-            header('X-Accel-Redirect: /' . $download_link);
+            header('X-Sendfile: '.realpath($download_link));
             header('Content-Type: '.mime_content_type($download_link));
             header('Content-length: ' . filesize($_SERVER["DOCUMENT_ROOT"]."/".$download_link));
             header('Content-Disposition: attachment; filename="'.$filename.".".$ext.'"');
