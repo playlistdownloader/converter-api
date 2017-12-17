@@ -31,7 +31,7 @@ In order to use converter-api you must have the following :
 APP_URL = "https://playlist-converter.me/"
 DOMAIN = "playlist-converter.me"
 ENCRYPT_KEY ="somerandomstringhere"
-DEMO = false
+ENV = "DEV" or "PROD"
 VERSION = "v2"
 DOWNLOAD_FOLDER = "tmp" #This is the folder where most downloads/conversions happen
 
@@ -44,7 +44,20 @@ DEEZER_APP_KEY = "xxxxxx"
 DEEZER_APP_SECRET = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 GOOGLE_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx--xxxxxxx"
 ```
-3. To be continued
+3. Add URL-Rewriting: Since I'm using Klein PHP router, a few changes must be made to your  server configuraion.
+    * Apache
+
+      Make sure [AllowOverride](http://httpd.apache.org/docs/2.0/mod/core.html#allowoverride) is on for your directory, or put in `httpd.conf`
+
+          # Apache (.htaccess or httpd.conf)
+          RewriteEngine On
+          RewriteCond %{REQUEST_FILENAME} !-f
+          RewriteRule . /index.php [L] 
+
+	* nginx
+
+    		# basics
+    		try_files $uri $uri/ /index.php?$args;
 
 
 ## Built With
