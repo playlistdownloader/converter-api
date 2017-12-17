@@ -15,6 +15,7 @@ $this->respond('GET', '/', function ($request, $response) {
     return http_response_code(200);
 });
 $this->respond('POST','/fetch',function ($request, $response) {
+    global $logger;
     global $pdo;
     # Fetches the download infos
     $body = $request->body();
@@ -59,6 +60,12 @@ $this->respond('POST','/fetch',function ($request, $response) {
                         } catch (PDOException $ex) {
                             // Re-throw exception if it wasn't a constraint violation.
                             if ($ex->getCode() != 23000) {
+                                $logger->critical("A PDO Exception was raised.",[
+                                    "Error" =>$e->getMessage(),
+                                    "Request Details"=>[
+                                       "URL"=> $url
+                                    ]
+                                ]);
                                 return Json::encode(generate_response([], "error", "PDO", "Something went wrong, please contact the administrator.")) . PHP_EOL;
                             }
                         }
@@ -101,6 +108,12 @@ $this->respond('POST','/fetch',function ($request, $response) {
                             } catch (PDOException $ex) {
                                 // Re-throw exception if it wasn't a constraint violation.
                                 if ($ex->getCode() != 23000) {
+                                    $logger->critical("A PDO Exception was raised.",[
+                                        "Error" =>$e->getMessage(),
+                                        "Request Details"=>[
+                                           "URL"=> $url
+                                        ]
+                                    ]);
                                     return Json::encode(generate_response([], "error", "PDO", "Something went wrong, please contact the administrator.")) . PHP_EOL;
                                 }
                             }
@@ -159,6 +172,12 @@ $this->respond('POST','/fetch',function ($request, $response) {
                         } catch (PDOException $ex) {
                             // Re-throw exception if it wasn't a constraint violation.
                             if ($ex->getCode() != 23000) {
+                                $logger->critical("A PDO Exception was raised.",[
+                                    "Error" =>$e->getMessage(),
+                                    "Request Details"=>[
+                                       "URL"=> $url
+                                    ]
+                                ]);
                                 return Json::encode(generate_response([], "error", "PDO", "Something went wrong, please contact the administrator.")) . PHP_EOL;
                             }
                         }
@@ -206,6 +225,12 @@ $this->respond('POST','/fetch',function ($request, $response) {
                                 } catch (PDOException $ex) {
                                     // Re-throw exception if it wasn't a constraint violation.
                                     if ($ex->getCode() != 23000) {
+                                        $logger->critical("A PDO Exception was raised.",[
+                                            "Error" =>$e->getMessage(),
+                                            "Request Details"=>[
+                                               "URL"=> $url
+                                            ]
+                                        ]);
                                         return Json::encode(generate_response([], "error", "PDO", "Something went wrong, please contact the administrator.")) . PHP_EOL;
                                     }
                                 }
@@ -243,6 +268,12 @@ $this->respond('POST','/fetch',function ($request, $response) {
                                 } catch (PDOException $ex) {
                                     // Re-throw exception if it wasn't a constraint violation.
                                     if ($ex->getCode() != 23000) {
+                                        $logger->critical("A PDO Exception was raised.",[
+                                            "Error" =>$e->getMessage(),
+                                            "Request Details"=>[
+                                               "URL"=> $url
+                                            ]
+                                        ]);
                                         return Json::encode(generate_response([], "error", "PDO", "Something went wrong, please contact the administrator.")) . PHP_EOL;
                                     }
                                 }
@@ -279,6 +310,12 @@ $this->respond('POST','/fetch',function ($request, $response) {
                         } catch (PDOException $ex) {
                             // Re-throw exception if it wasn't a constraint violation.
                             if ($ex->getCode() != 23000) {
+                                $logger->critical("A PDO Exception was raised.",[
+                                    "Error" =>$e->getMessage(),
+                                    "Request Details"=>[
+                                       "URL"=> $url
+                                    ]
+                                ]);
                                 return Json::encode(generate_response([], "error", "PDO", "Something went wrong, please contact the administrator.")) . PHP_EOL;
                             }
                         }
@@ -312,11 +349,23 @@ $this->respond('POST','/fetch',function ($request, $response) {
                         } catch (PDOException $ex) {
                             // Re-throw exception if it wasn't a constraint violation.
                             if ($ex->getCode() != 23000) {
+                                $logger->critical("A PDO Exception was raised.",[
+                                    "Error" =>$e->getMessage(),
+                                    "Request Details"=>[
+                                       "URL"=> $url
+                                    ]
+                                ]);
                                 return Json::encode(generate_response([], "error", "PDO", "Something went wrong, please contact the administrator.")) . PHP_EOL;
                             }
                         }
                         return $res;
                     } else {
+                        
+                        $logger->info("A non-supported download was requested.",[
+                            "Request Details"=>[
+                               "URL"=> $url
+                            ]
+                        ]);
                         return Json::encode(generate_response([], "fail", "002", $response)) . PHP_EOL;
                     }
                 }
@@ -324,11 +373,14 @@ $this->respond('POST','/fetch',function ($request, $response) {
         }
     } catch (Exception $e) {
         // Log the exception
+        $logger->critical("A PDO Exception was raised.",[
+            "Error" =>$e->getMessage(),
+            "Request Details"=>[
+               "URL"=> $url
+            ]
+        ]);
         // Return a response to API users
-        // TODO Remove the $e from the response !!
-        /* ."/n Something went wrong, please contact the administrator."*/
-        print_r($e);
-        return Json::encode(generate_response([], "error", "000", $e)) . PHP_EOL;
+        return Json::encode(generate_response([], "error", "000", "Something went wrong, please contact the administrator.")) . PHP_EOL;
     }
 });
 

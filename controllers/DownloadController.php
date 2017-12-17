@@ -18,6 +18,12 @@ $this->respond('GET', '/[:id]/formats', function ($request, $response, $service)
     #Check if playlist
     if(substr($id, 0, 9) === "playlist_" or !$downloadInfo){
         //$id = substr($id,9);
+        global $logger;
+        $logger->info("An unknown download was requested.",[
+            "Request Details"=>[
+               "id"=> $id
+            ]
+        ]);
         return Json::encode(generate_response([], "fail", "003", "Unknown ID or not yet supported!")) . PHP_EOL;
     }else{
         #It's not a playlist
@@ -55,6 +61,12 @@ $this->respond('GET', '/[:id]/[i:format_id]', function ($request, $response, $se
     #Check if playlist
     if(substr($id, 0, 9) === "playlist_" || !$downloadInfo){
         //$id = substr($id,9);
+        global $logger;
+        $logger->info("An unknown download was requested.",[
+            "Request Details"=>[
+               "id"=> $id
+            ]
+        ]);
         return Json::encode(generate_response([], "fail", "003", "Unknown ID or not yet supported!")) . PHP_EOL;
     }else{
         #It's not a playlist
