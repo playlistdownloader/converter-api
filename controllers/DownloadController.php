@@ -92,7 +92,7 @@ $this->respond('GET', '/[:id]/[i:format_id]', function ($request, $response, $se
             incrementFinished();
             decrementUnfinished();
             updateUsage($size);
-            header('X-Sendfile: '.realpath($download_link));
+            header('X-Accel-Redirect: /'.$download_link);
             header('Content-Type: '.mime_content_type($download_link));
             header('Content-length: ' . $size);
             header('Content-Disposition: attachment; filename="'.$filename.".".$ext.'"');

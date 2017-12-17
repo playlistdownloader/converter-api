@@ -4,166 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c4a1ff78ec243087fe8ee8e228583e04",
+    "content-hash": "051d40863b49d70b7aaebc8142d547a9",
     "packages": [
-        {
-            "name": "delight-im/auth",
-            "version": "v5.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/delight-im/PHP-Auth.git",
-                "reference": "0909291cf164313d2d8c04a54a49aed7b5e03382"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/delight-im/PHP-Auth/zipball/0909291cf164313d2d8c04a54a49aed7b5e03382",
-                "reference": "0909291cf164313d2d8c04a54a49aed7b5e03382",
-                "shasum": ""
-            },
-            "require": {
-                "delight-im/cookie": "^2.1",
-                "delight-im/db": "^1.2",
-                "ext-openssl": "*",
-                "php": ">=5.6.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Delight\\Auth\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Authentication for PHP. Simple, lightweight and secure.",
-            "homepage": "https://github.com/delight-im/PHP-Auth",
-            "keywords": [
-                "Authentication",
-                "auth",
-                "login",
-                "security"
-            ],
-            "time": "2017-07-02T21:12:36+00:00"
-        },
-        {
-            "name": "delight-im/cookie",
-            "version": "v2.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/delight-im/PHP-Cookie.git",
-                "reference": "04cd3db4f42940cb9c1a6ab2eebdcbe41f642f76"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/delight-im/PHP-Cookie/zipball/04cd3db4f42940cb9c1a6ab2eebdcbe41f642f76",
-                "reference": "04cd3db4f42940cb9c1a6ab2eebdcbe41f642f76",
-                "shasum": ""
-            },
-            "require": {
-                "delight-im/http": "^2.0",
-                "php": ">=5.4.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Delight\\Cookie\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Modern cookie management for PHP",
-            "homepage": "https://github.com/delight-im/PHP-Cookie",
-            "keywords": [
-                "cookie",
-                "cookies",
-                "csrf",
-                "http",
-                "same-site",
-                "samesite",
-                "xss"
-            ],
-            "time": "2017-10-14T04:23:01+00:00"
-        },
-        {
-            "name": "delight-im/db",
-            "version": "v1.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/delight-im/PHP-DB.git",
-                "reference": "df99ef7c2e86c7ce206647ffe8ba74447c075b57"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/delight-im/PHP-DB/zipball/df99ef7c2e86c7ce206647ffe8ba74447c075b57",
-                "reference": "df99ef7c2e86c7ce206647ffe8ba74447c075b57",
-                "shasum": ""
-            },
-            "require": {
-                "ext-pdo": "*",
-                "php": ">=5.6.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Delight\\Db\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Safe and convenient SQL database access in a driver-agnostic way",
-            "homepage": "https://github.com/delight-im/PHP-DB",
-            "keywords": [
-                "database",
-                "mysql",
-                "pdo",
-                "pgsql",
-                "postgresql",
-                "sql",
-                "sqlite"
-            ],
-            "time": "2017-03-18T20:51:59+00:00"
-        },
-        {
-            "name": "delight-im/http",
-            "version": "v2.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/delight-im/PHP-HTTP.git",
-                "reference": "0a19a72a7eac8b1301aa972fb20cff494ac43e09"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/delight-im/PHP-HTTP/zipball/0a19a72a7eac8b1301aa972fb20cff494ac43e09",
-                "reference": "0a19a72a7eac8b1301aa972fb20cff494ac43e09",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Delight\\Http\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Hypertext Transfer Protocol (HTTP) utilities for PHP",
-            "homepage": "https://github.com/delight-im/PHP-HTTP",
-            "keywords": [
-                "headers",
-                "http",
-                "https"
-            ],
-            "time": "2016-07-21T15:05:01+00:00"
-        },
         {
             "name": "filp/whoops",
             "version": "2.1.14",
@@ -375,16 +217,16 @@
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.37",
+            "version": "v0.38",
             "source": {
                 "type": "git",
                 "url": "https://github.com/google/google-api-php-client-services.git",
-                "reference": "75fb5412eec7cfc9f78ac0f8d23e907ce07c2330"
+                "reference": "b7df3c72e7d7b4d9b7931d48ada036e57600c9de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/google/google-api-php-client-services/zipball/75fb5412eec7cfc9f78ac0f8d23e907ce07c2330",
-                "reference": "75fb5412eec7cfc9f78ac0f8d23e907ce07c2330",
+                "url": "https://api.github.com/repos/google/google-api-php-client-services/zipball/b7df3c72e7d7b4d9b7931d48ada036e57600c9de",
+                "reference": "b7df3c72e7d7b4d9b7931d48ada036e57600c9de",
                 "shasum": ""
             },
             "require": {
@@ -408,20 +250,20 @@
             "keywords": [
                 "google"
             ],
-            "time": "2017-12-02T00:23:18+00:00"
+            "time": "2017-12-10T00:23:17+00:00"
         },
         {
             "name": "google/auth",
-            "version": "v1.1.0",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/google/google-auth-library-php.git",
-                "reference": "548d27d670f0236dc5258fa4cdde6e7b63464cfd"
+                "reference": "f3fc99fd621f339ee3d4de01bd6a709ed1396116"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/google/google-auth-library-php/zipball/548d27d670f0236dc5258fa4cdde6e7b63464cfd",
-                "reference": "548d27d670f0236dc5258fa4cdde6e7b63464cfd",
+                "url": "https://api.github.com/repos/google/google-auth-library-php/zipball/f3fc99fd621f339ee3d4de01bd6a709ed1396116",
+                "reference": "f3fc99fd621f339ee3d4de01bd6a709ed1396116",
                 "shasum": ""
             },
             "require": {
@@ -434,7 +276,9 @@
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^1.11",
-                "phpunit/phpunit": "3.7.*"
+                "guzzlehttp/promises": "0.1.1|^1.3",
+                "phpunit/phpunit": "^4.8.36",
+                "sebastian/comparator": ">=1.2.3"
             },
             "type": "library",
             "autoload": {
@@ -453,7 +297,7 @@
                 "google",
                 "oauth2"
             ],
-            "time": "2017-10-10T17:01:45+00:00"
+            "time": "2017-12-06T21:27:53+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -769,119 +613,6 @@
                 "psr-3"
             ],
             "time": "2017-06-19T01:22:40+00:00"
-        },
-        {
-            "name": "owasp/csrf-protector-php",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mebjas/CSRF-Protector-PHP.git",
-                "reference": "88cfff18dbdc604d51c653f728da161b4ea1eb02"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mebjas/CSRF-Protector-PHP/zipball/88cfff18dbdc604d51c653f728da161b4ea1eb02",
-                "reference": "88cfff18dbdc604d51c653f728da161b4ea1eb02",
-                "shasum": ""
-            },
-            "require-dev": {
-                "satooshi/php-coveralls": "~1.0"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "libs/csrf/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "APACHE"
-            ],
-            "description": "CSRF protector php, a standalone php library for csrf mitigation in web applications. Easy to integrate in any php web app.",
-            "homepage": "https://github.com/mebjas/CSRF-Protector-PHP",
-            "keywords": [
-                "csrf",
-                "owasp",
-                "security"
-            ],
-            "time": "2017-10-06 09:26:46"
-        },
-        {
-            "name": "phpmailer/phpmailer",
-            "version": "v5.2.26",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/PHPMailer/PHPMailer.git",
-                "reference": "70362997bda4376378be7d92d81e2200550923f7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/70362997bda4376378be7d92d81e2200550923f7",
-                "reference": "70362997bda4376378be7d92d81e2200550923f7",
-                "shasum": ""
-            },
-            "require": {
-                "ext-ctype": "*",
-                "php": ">=5.0.0"
-            },
-            "require-dev": {
-                "doctrine/annotations": "1.2.*",
-                "jms/serializer": "0.16.*",
-                "phpdocumentor/phpdocumentor": "2.*",
-                "phpunit/phpunit": "4.8.*",
-                "symfony/debug": "2.8.*",
-                "symfony/filesystem": "2.8.*",
-                "symfony/translation": "2.8.*",
-                "symfony/yaml": "2.8.*",
-                "zendframework/zend-cache": "2.5.1",
-                "zendframework/zend-config": "2.5.1",
-                "zendframework/zend-eventmanager": "2.5.1",
-                "zendframework/zend-filter": "2.5.1",
-                "zendframework/zend-i18n": "2.5.1",
-                "zendframework/zend-json": "2.5.1",
-                "zendframework/zend-math": "2.5.1",
-                "zendframework/zend-serializer": "2.5.*",
-                "zendframework/zend-servicemanager": "2.5.*",
-                "zendframework/zend-stdlib": "2.5.1"
-            },
-            "suggest": {
-                "league/oauth2-google": "Needed for Google XOAUTH2 authentication"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "class.phpmailer.php",
-                    "class.phpmaileroauth.php",
-                    "class.phpmaileroauthgoogle.php",
-                    "class.smtp.php",
-                    "class.pop3.php",
-                    "extras/EasyPeasyICS.php",
-                    "extras/ntlm_sasl_client.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "LGPL-2.1"
-            ],
-            "authors": [
-                {
-                    "name": "Jim Jagielski",
-                    "email": "jimjag@gmail.com"
-                },
-                {
-                    "name": "Marcus Bointon",
-                    "email": "phpmailer@synchromedia.co.uk"
-                },
-                {
-                    "name": "Andy Prevost",
-                    "email": "codeworxtech@users.sourceforge.net"
-                },
-                {
-                    "name": "Brent R. Matzelle"
-                }
-            ],
-            "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
-            "time": "2017-11-04T09:26:05+00:00"
         },
         {
             "name": "phpseclib/phpseclib",
@@ -1236,9 +967,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "owasp/csrf-protector-php": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
