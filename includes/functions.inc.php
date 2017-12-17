@@ -205,7 +205,8 @@ function parseDeezerID($url,$deezer_playlist_reg){
 }
 
 function storePlaylistDownloads($id,$downloads){
-	global $pdo;
+    global $pdo;
+    global $logger;
 	$data = serialize($downloads);
 	try {
 		// Add response to database
@@ -219,6 +220,9 @@ function storePlaylistDownloads($id,$downloads){
 	} catch (PDOException $ex) {
 		// Re-throw exception if it wasn't a constraint violation.
 		if ($ex->getCode() != 23000) {
+            $logger->critical("A PDO Exception was raised inside a function storePlaylistDownloads(id,downloads).",[
+                "Error" =>$e->getMessage(),
+            ]);
 			return \fkooman\Json\Json::encode(generate_response([], "error", "PDO", "Something went wrong, please contact the administrator.")) . PHP_EOL;
 		}
 	}
