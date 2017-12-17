@@ -58,11 +58,22 @@ GOOGLE_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx--xxxxxxx"
 
     		# basics
     		try_files $uri $uri/ /index.php?$args;
-
+4. Import the database "database.sql"
+5. To be continued ...
 
 ## Built With
 
 * [PHP](http://php.net/)
+
+## Used libraries
+
+* [filp/whoops](https://github.com/filp/whoops)
+* [fkooman/json](https://github.com/fkooman/json)
+* [klein/klein ♥️](https://github.com/klein/klein)
+* [google/apiclient](https://github.com/google/apiclient)
+* [vlucas/phpdotenv](https://github.com/vlucas/phpdotenv)
+* [sentry/sentry](https://github.com/sentry/sentry)
+* [monolog/monolog](https://github.com/monolog/monolog)
 
 ## Authors
 
