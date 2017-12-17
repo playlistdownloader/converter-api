@@ -8,8 +8,8 @@ use fkooman\Json\Json;
 use fkooman\Json\JsonException;
 use Tools\API;
 
-$this->respond('GET','/[:id]/', function ($request, $response, $service) {
-    return Json::encode(generate_response([], "fail", "xxx", "A format must be specified.")) . PHP_EOL;
+$this->respond('GET','/[:id]', function ($request, $response, $service) {
+    return Json::encode(generate_response([], "fail", "005  ", "A format must be specified.")) . PHP_EOL;
 });
 $this->respond('GET', '/[:id]/formats', function ($request, $response, $service) {
     #Check if ID exists
@@ -87,9 +87,14 @@ $this->respond('GET', '/[:id]/[i:format_id]', function ($request, $response, $se
             $audio = ($request->format_id == "999" ? true : false);
             $download_link = downloadFile($downloadInfoData['webpage_url'],$request->format_id,$ext,$audio);
             $filename = $downloadInfoData['title'];
+            $size = filesize($_SERVER["DOCUMENT_ROOT"]."/".$download_link);
+            // Count finished downloads ;)
+            incrementFinished();
+            decrementUnfinished();
+            updateUsage($size);
             header('X-Sendfile: '.realpath($download_link));
             header('Content-Type: '.mime_content_type($download_link));
-            header('Content-length: ' . filesize($_SERVER["DOCUMENT_ROOT"]."/".$download_link));
+            header('Content-length: ' . $size);
             header('Content-Disposition: attachment; filename="'.$filename.".".$ext.'"');
             header('X-Pad: avoid browser bug');
             header('Cache-Control: no-cache');

@@ -34,6 +34,7 @@ $this->respond('POST','/fetch',function ($request, $response) {
         } else {
             # Check if youtube video
             if (Validator::isValidYoutube($url)) {
+                incrementYoutubeSource();
                 if (Validator::isYoutubeVideo($url)) {
                     # Get the special Hash
                     $hash = \Tools\Hash::encrypt($url);
@@ -124,6 +125,7 @@ $this->respond('POST','/fetch',function ($request, $response) {
                     return Json::encode(generate_response($responses, "success", null, null, "playlist_".$playlistHash)) . PHP_EOL;
                 }
             } elseif (Validator::isValidDeezer($url)) {
+                incrementDeezerSource();
                 $config = array(
                     "app_id" => $_ENV['DEEZER_APP_KEY'],
                     "app_secret" =>$_ENV['DEEZER_APP_SECRET'],
@@ -187,6 +189,7 @@ $this->respond('POST','/fetch',function ($request, $response) {
                 }
                 return Json::encode(generate_response($responses, "success", null, null, "playlist_".$dzHash)) . PHP_EOL;
             } elseif (Validator::isValidSoundcloud($url)) {
+                incrementSoundcloudSource();
                 // It's a souncloud song
                 if (Validator::isSoundcloudSet($url)) {
                     $setHash = \Tools\Hash::encrypt($url);
@@ -335,6 +338,7 @@ $this->respond('POST','/fetch',function ($request, $response) {
                 } else {
                     $response = Validator::isSupportedByYTDL($url);
                     if ($response!== false) {
+                        incrementOtherSource();
                         #TODO Cache & Cleanup the response
                         $res = Json::encode(generate_response(json_decode($response, true), "success", null, null, $hash)) . PHP_EOL;
                         try {
@@ -360,20 +364,20 @@ $this->respond('POST','/fetch',function ($request, $response) {
                         }
                         return $res;
                     } else {
-                        
+                        incrementUnsupportedSource();
                         $logger->info("A non-supported download was requested.",[
                             "Request Details"=>[
                                "URL"=> $url
                             ]
                         ]);
-                        return Json::encode(generate_response([], "fail", "002", $response)) . PHP_EOL;
+                        return Json::encode(generate_response([], "fail", "002", "Unsupported service/website. Contact the administrator.")) . PHP_EOL;
                     }
                 }
             }
         }
     } catch (Exception $e) {
         // Log the exception
-        $logger->critical("A PDO Exception was raised.",[
+        $logger->critical("An Exception was raised.",[
             "Error" =>$e->getMessage(),
             "Request Details"=>[
                "URL"=> $url
