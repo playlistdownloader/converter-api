@@ -32,7 +32,8 @@ APP_URL = "https://playlist-converter.me/"
 DOMAIN = "playlist-converter.me"
 ENCRYPT_KEY ="somerandomstringhere"
 ENV = "DEV" or "PROD"
-VERSION = "v2"
+VERSION = "v1"
+STACK = "LEMP" or "LAMP"
 DOWNLOAD_FOLDER = "tmp" #This is the folder where most downloads/conversions happen
 
 DATABASE_NAME=""
@@ -41,8 +42,10 @@ DATABASE_PASS=""
 DATABASE_HOST="localhost"
 
 DEEZER_APP_KEY = "xxxxxx"
-DEEZER_APP_SECRET = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+DEEZER_APP_SECRET = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 GOOGLE_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx--xxxxxxx"
+LAST_FM_API_KEY=  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
 ```
 3. Add URL-Rewriting: Since I'm using Klein PHP router, a few changes must be made to your  server configuraion.
     * Apache

@@ -57,6 +57,7 @@ $this->respond('GET', '/[:id]/formats', function ($request, $response, $service)
 });
 
 $this->respond('GET', '/[:id]/[i:format_id]', function ($request, $response, $service) {
+    global $usingNginx;
     #Check if ID exists
     $id = $request->id;
     $downloadInfo = getDownloadInfo($id);
@@ -99,7 +100,11 @@ $this->respond('GET', '/[:id]/[i:format_id]', function ($request, $response, $se
             //    $mp3 = new MP3($download_link);
             //    $mp3->fixTags();
             //}
-            header('X-Accel-Redirect: /'.$download_link);
+            if($usingNginx){
+                header('X-Accel-Redirect: /'.$download_link);
+            }else{
+                header('X-Sendfile: '.realpath($download_link));
+            }
             header('Content-Type: '.mime_content_type($download_link));
             header('Content-length: ' . $size);
             header('Content-Disposition: attachment; filename="'.$filename.".".$ext.'"');
