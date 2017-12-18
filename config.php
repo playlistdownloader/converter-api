@@ -48,7 +48,7 @@ $whoops->pushHandler(new Whoops\Handler\JsonResponseHandler());
 $devMode = $_ENV['ENV'] === 'DEV'? true: false;
 
 // Need this to change the file serving header !
-$usingNginx = $_ENV['stack'] === 'LEMP'? true: false;
+$usingNginx = $_ENV['STACK'] === 'LEMP'? true: false;
 
 if($devMode){
     // Dev mode only 

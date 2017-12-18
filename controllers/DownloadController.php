@@ -96,10 +96,12 @@ $this->respond('GET', '/[:id]/[i:format_id]', function ($request, $response, $se
             decrementUnfinished();
             updateUsage($size);
             // If MP3 - Fix ID3 tags before downloading 
-            //if($request->format_id == "999"){
-            //    $mp3 = new MP3($download_link);
-            //    $mp3->fixTags();
-            //}
+            if($request->format_id == "999"){
+                $title = $downloadInfoData['track'];
+                $artist = $downloadInfoData['artist'];
+                $mp3 = new MP3($download_link);
+                $mp3->fixTags($title,$artist);
+            }
             if($usingNginx){
                 header('X-Accel-Redirect: /'.$download_link);
             }else{
