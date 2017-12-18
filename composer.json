@@ -14,12 +14,10 @@
         "sentry/sentry": "^1.7",
         "monolog/monolog": "^1.23",
         "filp/whoops": "2.*",
-        "owasp/csrf-protector-php": "dev-master",
-        "delight-im/auth": "^5.2",
-        "phpmailer/phpmailer": "^5.2",
         "klein/klein": "^2.1",
         "fkooman/json": "^2.0",
-        "firebase/php-jwt": "^5.0",
-        "google/apiclient": "^2.2"
+        "google/apiclient": "^2.2",
+        "james-heinrich/getid3": "^1.9",
+        "guzzlehttp/guzzle": "^6.3"
     }
 }

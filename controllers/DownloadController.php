@@ -3,10 +3,12 @@
 require_once('includes/Validator.php');
 require_once('includes/Hash.php');
 require_once('includes/API.php');
+require_once('includes/MP3.php');
 
 use fkooman\Json\Json;
 use fkooman\Json\JsonException;
 use Tools\API;
+use Tools\MP3;
 
 $this->respond('GET','/[:id]', function ($request, $response, $service) {
     return Json::encode(generate_response([], "fail", "005  ", "A format must be specified.")) . PHP_EOL;
@@ -55,6 +57,7 @@ $this->respond('GET', '/[:id]/formats', function ($request, $response, $service)
 });
 
 $this->respond('GET', '/[:id]/[i:format_id]', function ($request, $response, $service) {
+    global $usingNginx;
     #Check if ID exists
     $id = $request->id;
     $downloadInfo = getDownloadInfo($id);
@@ -87,12 +90,21 @@ $this->respond('GET', '/[:id]/[i:format_id]', function ($request, $response, $se
             $audio = ($request->format_id == "999" ? true : false);
             $download_link = downloadFile($downloadInfoData['webpage_url'],$request->format_id,$ext,$audio);
             $filename = $downloadInfoData['title'];
-            $size = filesize($_SERVER["DOCUMENT_ROOT"]."/".$download_link);
+            $size = filesize($_SERVER["DOCUMENT_ROOT"].$download_link);
             // Count finished downloads ;)
             incrementFinished();
             decrementUnfinished();
             updateUsage($size);
-            header('X-Sendfile: '.realpath($download_link));
+            // If MP3 - Fix ID3 tags before downloading 
+            //if($request->format_id == "999"){
+            //    $mp3 = new MP3($download_link);
+            //    $mp3->fixTags();
+            //}
+            if($usingNginx){
+                header('X-Accel-Redirect: /'.$download_link);
+            }else{
+                header('X-Sendfile: '.realpath($download_link));
+            }
             header('Content-Type: '.mime_content_type($download_link));
             header('Content-length: ' . $size);
             header('Content-Disposition: attachment; filename="'.$filename.".".$ext.'"');
