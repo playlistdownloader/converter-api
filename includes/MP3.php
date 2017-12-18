@@ -54,13 +54,11 @@ class MP3
         return array($string);
     }
     
-    public function fetchInternetTags(){
-        $title = $this->title;
-        $artist = $this->artist;
+    public function fetchInternetTags($title,$artist){
         $client = new \GuzzleHttp\Client();
         $res = $client->request('GET','http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key='.$_ENV['LAST_FM_API_KEY'].'&artist='.$artist.'&track='.$title.'&format=json');
         $response = json_decode($res->getBody(), True);
-        if(!empty($response)){
+        if(!empty($response) && !isset($response['error'])){
             $response = $response['track'];
             $tags = [
                 'title'                  => !empty($response['name']) ? $response['name'] : $this->title,
@@ -68,7 +66,7 @@ class MP3
                 'album'                  => !empty($response['album']['title']) ? $response['album']['title'] : $this->album,
                 'genre'                  => !empty($response['genre']) ? $response['genre']: $this->genre,
                 'year'                   => !empty($response['year']) ? $response['year']: $this->year,
-                'comment'                => ''
+                'comment'                => 'Downloaded using '.$_ENV['DOMAIN']
             ];
             #TODO fetch the image & converter it to binary data + APIC !
             return $tags;
@@ -77,8 +75,8 @@ class MP3
             return [];
         }
     }
-    public function fixTags(){
-        $tags = $this->fetchInternetTags();
+    public function fixTags($title,$artist){
+        $tags = $this->fetchInternetTags($title,$artist);
         return $this->writeTags($tags);
 
     }
