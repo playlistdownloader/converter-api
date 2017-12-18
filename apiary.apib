@@ -24,621 +24,84 @@ also available formats and other information.
 
 + Request (application/json)
 
-        {
-            "key": "enter-your-API-key-here",
-            "url": "https://www.youtube.com/watch?v=HxJ0YyPYv34"
-        }
+            {
+                "key": "enter-your-API-key-here",
+                "url": "https://www.youtube.com/watch?v=HxJ0YyPYv34"
+            }
 
 + Response 201 (application/json)
 
     + Schema
 
-        {
-            "status": "success",
-            "download_id": "a unique id",
-            "data": {
+            {
+                "status": "success",
                 "download_id": "a unique id",
-                "source": "", #Not always added
-                "link": "",
-                "webpage_url": "",
-                "title": "",
-                "description": "",
-                "filename": "",
-                "artist": "",
-                "track": "",
-                "uploader": "",
-                "download_link": "http://converterapi.local/download/unique_id",
-                "thumbnail": "",
-                "formats": [
-                    {
-                        "fps": "",
-                        "acodec": "",
-                        "abr": xx,
-                        "container": "",
-                        "format_note": "",
-                        "format": "",
-                        "url": "",
-                        "vcodec": "",
-                        "ext": "",
-                        "format_id": "xxx",
-                        "filesize": 1186541,
-                        "height": "",
-                        "width": ""
-                    } 
-                ]
+                "data": {
+                    "download_id": "a unique id",
+                    "source": "", #Not always added
+                    "link": "",
+                    "webpage_url": "",
+                    "title": "",
+                    "description": "",
+                    "filename": "",
+                    "artist": "",
+                    "track": "",
+                    "uploader": "",
+                    "download_link": "http://converterapi.local/download/unique_id",
+                    "thumbnail": "",
+                    "formats": [
+                        {
+                            "fps": "",
+                            "acodec": "",
+                            "abr": xx,
+                            "container": "",
+                            "format_note": "",
+                            "format": "",
+                            "url": "",
+                            "vcodec": "",
+                            "ext": "",
+                            "format_id": "xxx",
+                            "filesize": 1186541,
+                            "height": "",
+                            "width": ""
+                        } 
+                    ]
+                }
             }
-        }
 
     + Body
 
-        {
-            "status": "success",
-            "download_id": "nLXi0eaNo57p5OCmqqGoqLbQxqG249yh5MrslJpyqn622b2DzejCxt-rZQ",
-            "data": {
+            {
+                "status": "success",
                 "download_id": "nLXi0eaNo57p5OCmqqGoqLbQxqG249yh5MrslJpyqn622b2DzejCxt-rZQ",
-                "source": "Youtube",
-                "link": "https://www.youtube.com/watch?v=HxJ0YyPYv34",
-                "webpage_url": "https://www.youtube.com/watch?v=HxJ0YyPYv34",
-                "title": "Ghali -  Vai Tra  (Prod. Chris Nolan)",
-                "description": "Segui Ghali:\nFacebook: http://on.fb.me/1DUthR3\nTwitter: http://bit.ly/1EsFvkn\nInstagram: http://bit.ly/1nfpCZ2\nSoundcloud: http://bit.ly/1GFqj33\n\nSegui Chris Nolan:\nFacebook: http://bit.ly/1HPRyKS\nInstagram: http://bit.ly/23IN591\n\nRegia di Jamie Robert Othieno & Alessandro Murdaca\n\nSegui Alessandro Murdaca:\nE-mail: info@alessandromurdaca.com\nFacebook: http://on.fb.me/1Kl7uS0\nTwitter: http://bit.ly/1NuVSRG\nInstagram: http://bit.ly/1Fdpf9I\n\nSegui Jamie Robert Othieno:\nFacebook: https://www.facebook.com/jamierobertf...\nTumblr: http://bit.ly/1QK1Xvs\nInstagram: http://bit.ly/1X4RRVz\n\nNinna nanna - Nuovo Video Ufficiale\nhttps://www.youtube.com/watch?v=s1xbQVNGSPQ\n\nGhali - Guarda tutti i video ufficiali....\nhttps://www.youtube.com/playlist?list=PLEjNW3XN7fMLeMrK9i-h_6ECbAqbMqtGN",
-                "filename": "Ghali -  Vai Tra  (Prod. Chris Nolan)",
-                "artist": "Ghali",
-                "track": "Vai Tra  (Prod. Chris Nolan)",
-                "uploader": "Ghali",
-                "download_link": "http://converterapi.local/download/nLXi0eaNo57p5OCmqqGoqLbQxqG249yh5MrslJpyqn622b2DzejCxt-rZQ",
-                "thumbnail": "https://i.ytimg.com/vi/HxJ0YyPYv34/maxresdefault.jpg",
-                "formats": [
-                    {
-                        "http_headers": {
-                            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20150101 Firefox/47.0 (Chrome)",
-                            "Accept-Charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.7",
-                            "Accept-Encoding": "gzip, deflate",
-                            "Accept-Language": "en-us,en;q=0.5",
-                            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
-                        },
-                        "protocol": "https",
-                        "fps": null,
-                        "acodec": "mp4a.40.5",
-                        "abr": 48,
-                        "container": "m4a_dash",
-                        "format_note": "DASH audio",
-                        "format": "139 - audio only (DASH audio)",
-                        "url": "https://r2---sn-p5h-4x1e.googlevideo.com/videoplayback?id=1f12746323d8bf7e&itag=139&source=youtube&requiressl=yes&mv=m&ei=5i43Wry5D4LgVYvClBg&ms=au&mm=31&pl=21&mn=sn-p5h-4x1e&initcwndbps=255000&ratebypass=yes&mime=audio/mp4&gir=yes&clen=1186541&lmt=1507272848937663&dur=199.412&key=dg_yt0&mt=1513565805&signature=18B93C25B7B00442CC60EF4868719E7DDC47A0FC.3C98D79A2630F37E14DD2122C33680B4D2839B2D&ip=160.178.41.31&ipbits=0&expire=1513587526&sparams=ip,ipbits,expire,id,itag,source,requiressl,mv,ei,ms,mm,pl,mn,initcwndbps,ratebypass,mime,gir,clen,lmt,dur",
-                        "vcodec": "none",
-                        "ext": "m4a",
-                        "manifest_url": "https://manifest.googlevideo.com/api/manifest/dash/key/yt6/as/fmp4_audio_clear%2Cfmp4_sd_hd_clear/mv/m/sparams/as%2Cei%2Chfr%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmm%2Cmn%2Cms%2Cmv%2Cpl%2Cplayback_host%2Crequiressl%2Csource%2Cexpire/source/youtube/mt/1513565805/itag/0/ei/5i43Wry5D4LgVYvClBg/id/1f12746323d8bf7e/ms/au/mm/31/hfr/1/pl/21/mn/sn-p5h-4x1e/ipbits/0/expire/1513587526/ip/160.178.41.31/initcwndbps/255000/requiressl/yes/signature/BF58F20BABC9C82C55456F94EEDC45CF886E21FA.A365AB40A464826B4AE787E0C0E7CB3DE3FFA376/playback_host/r2---sn-p5h-4x1e.googlevideo.com",
-                        "format_id": "139",
-                        "tbr": 48.642,
-                        "asr": 22050,
-                        "language": null,
-                        "filesize": 1186541,
-                        "height": null,
-                        "width": null
-                    },
-                    {
-                        "vcodec": "none",
-                        "ext": "webm",
-                        "format_id": "249",
-                        "http_headers": {
-                            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20150101 Firefox/47.0 (Chrome)",
-                            "Accept-Charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.7",
-                            "Accept-Encoding": "gzip, deflate",
-                            "Accept-Language": "en-us,en;q=0.5",
-                            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
-                        },
-                        "protocol": "https",
-                        "acodec": "opus",
-                        "tbr": 69.753,
-                        "abr": 50,
-                        "format_note": "DASH audio",
-                        "filesize": 1463264,
-                        "format": "249 - audio only (DASH audio)",
-                        "player_url": "/yts/jsbin/player-vflyoGrhd/en_US/base.js",
-                        "url": "https://r2---sn-p5h-4x1e.googlevideo.com/videoplayback?mime=audio%2Fwebm&pl=21&itag=249&keepalive=yes&sparams=clen%2Cdur%2Cei%2Cgir%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Ckeepalive%2Clmt%2Cmime%2Cmm%2Cmn%2Cms%2Cmv%2Cpl%2Crequiressl%2Csource%2Cexpire&ipbits=0&lmt=1492996924290139&key=yt6&ip=160.178.41.31&expire=1513587525&dur=199.281&initcwndbps=255000&source=youtube&id=o-ADCJr_gxkQP9YeGQVwzX76SNqS8gApLKf5bWcbt3kZoO&gir=yes&mn=sn-p5h-4x1e&mm=31&mv=m&mt=1513565805&ms=au&ei=5S43WoLSFIS1VbXsnpgM&requiressl=yes&clen=1463264&signature=066ED33719B74A71AB9FE03A6903316F48AEFBCA.79B344E8223D70A76582A99F6C8DC2263AF45D50&ratebypass=yes"
-                    },
-                    {
-                        "vcodec": "none",
-                        "ext": "webm",
-                        "format_id": "250",
-                        "http_headers": {
-                            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20150101 Firefox/47.0 (Chrome)",
-                            "Accept-Charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.7",
-                            "Accept-Encoding": "gzip, deflate",
-                            "Accept-Language": "en-us,en;q=0.5",
-                            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
-                        },
-                        "protocol": "https",
-                        "acodec": "opus",
-                        "tbr": 88.871,
-                        "abr": 70,
-                        "format_note": "DASH audio",
-                        "filesize": 1910734,
-                        "format": "250 - audio only (DASH audio)",
-                        "player_url": "/yts/jsbin/player-vflyoGrhd/en_US/base.js",
-                        "url": "https://r2---sn-p5h-4x1e.googlevideo.com/videoplayback?mime=audio%2Fwebm&pl=21&itag=250&keepalive=yes&sparams=clen%2Cdur%2Cei%2Cgir%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Ckeepalive%2Clmt%2Cmime%2Cmm%2Cmn%2Cms%2Cmv%2Cpl%2Crequiressl%2Csource%2Cexpire&ipbits=0&lmt=1492996919480769&key=yt6&ip=160.178.41.31&expire=1513587525&dur=199.281&initcwndbps=255000&source=youtube&id=o-ADCJr_gxkQP9YeGQVwzX76SNqS8gApLKf5bWcbt3kZoO&gir=yes&mn=sn-p5h-4x1e&mm=31&mv=m&mt=1513565805&ms=au&ei=5S43WoLSFIS1VbXsnpgM&requiressl=yes&clen=1910734&signature=6D5667E6F78BE4FF8398409B5DD1FE6C22399D6B.34928208E488386A865FC4BED4682D2279A2FBF9&ratebypass=yes"
-                    },
-                    {
-                        "http_headers": {
-                            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20150101 Firefox/47.0 (Chrome)",
-                            "Accept-Charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.7",
-                            "Accept-Encoding": "gzip, deflate",
-                            "Accept-Language": "en-us,en;q=0.5",
-                            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
-                        },
-                        "protocol": "https",
-                        "fps": null,
-                        "acodec": "mp4a.40.2",
-                        "abr": 128,
-                        "container": "m4a_dash",
-                        "format_note": "DASH audio",
-                        "format": "140 - audio only (DASH audio)",
-                        "url": "https://r2---sn-p5h-4x1e.googlevideo.com/videoplayback?id=1f12746323d8bf7e&itag=140&source=youtube&requiressl=yes&mv=m&ei=5i43Wry5D4LgVYvClBg&ms=au&mm=31&pl=21&mn=sn-p5h-4x1e&initcwndbps=255000&ratebypass=yes&mime=audio/mp4&gir=yes&clen=3166681&lmt=1507272848963030&dur=199.343&key=dg_yt0&mt=1513565805&signature=826CCA733AAAC16B4FD1A4B5C7511E1F05728798.287A38BD432CFE1E1778FD21A778E5F2B3FC1CCA&ip=160.178.41.31&ipbits=0&expire=1513587526&sparams=ip,ipbits,expire,id,itag,source,requiressl,mv,ei,ms,mm,pl,mn,initcwndbps,ratebypass,mime,gir,clen,lmt,dur",
-                        "vcodec": "none",
-                        "ext": "m4a",
-                        "manifest_url": "https://manifest.googlevideo.com/api/manifest/dash/key/yt6/as/fmp4_audio_clear%2Cfmp4_sd_hd_clear/mv/m/sparams/as%2Cei%2Chfr%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmm%2Cmn%2Cms%2Cmv%2Cpl%2Cplayback_host%2Crequiressl%2Csource%2Cexpire/source/youtube/mt/1513565805/itag/0/ei/5i43Wry5D4LgVYvClBg/id/1f12746323d8bf7e/ms/au/mm/31/hfr/1/pl/21/mn/sn-p5h-4x1e/ipbits/0/expire/1513587526/ip/160.178.41.31/initcwndbps/255000/requiressl/yes/signature/BF58F20BABC9C82C55456F94EEDC45CF886E21FA.A365AB40A464826B4AE787E0C0E7CB3DE3FFA376/playback_host/r2---sn-p5h-4x1e.googlevideo.com",
-                        "format_id": "140",
-                        "tbr": 128.167,
-                        "asr": 44100,
-                        "language": null,
-                        "filesize": 3166681,
-                        "height": null,
-                        "width": null
-                    },
-                    {
-                        "vcodec": "none",
-                        "ext": "webm",
-                        "format_id": "171",
-                        "http_headers": {
-                            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20150101 Firefox/47.0 (Chrome)",
-                            "Accept-Charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.7",
-                            "Accept-Encoding": "gzip, deflate",
-                            "Accept-Language": "en-us,en;q=0.5",
-                            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
-                        },
-                        "protocol": "https",
-                        "acodec": "vorbis",
-                        "tbr": 139.09,
-                        "abr": 128,
-                        "format_note": "DASH audio",
-                        "filesize": 3195911,
-                        "format": "171 - audio only (DASH audio)",
-                        "player_url": "/yts/jsbin/player-vflyoGrhd/en_US/base.js",
-                        "url": "https://r2---sn-p5h-4x1e.googlevideo.com/videoplayback?mime=audio%2Fwebm&pl=21&itag=171&keepalive=yes&sparams=clen%2Cdur%2Cei%2Cgir%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Ckeepalive%2Clmt%2Cmime%2Cmm%2Cmn%2Cms%2Cmv%2Cpl%2Crequiressl%2Csource%2Cexpire&ipbits=0&lmt=1492996926212902&key=yt6&ip=160.178.41.31&expire=1513587525&dur=199.281&initcwndbps=255000&source=youtube&id=o-ADCJr_gxkQP9YeGQVwzX76SNqS8gApLKf5bWcbt3kZoO&gir=yes&mn=sn-p5h-4x1e&mm=31&mv=m&mt=1513565805&ms=au&ei=5S43WoLSFIS1VbXsnpgM&requiressl=yes&clen=3195911&signature=B53EE7239E7A8B858F2458040944DB201D4F87B6.A9685A8E1037233C262905AC3C9C849844A8CD62&ratebypass=yes"
-                    },
-                    {
-                        "vcodec": "none",
-                        "ext": "webm",
-                        "format_id": "251",
-                        "http_headers": {
-                            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20150101 Firefox/47.0 (Chrome)",
-                            "Accept-Charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.7",
-                            "Accept-Encoding": "gzip, deflate",
-                            "Accept-Language": "en-us,en;q=0.5",
-                            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
-                        },
-                        "protocol": "https",
-                        "acodec": "opus",
-                        "tbr": 169.984,
-                        "abr": 160,
-                        "format_note": "DASH audio",
-                        "filesize": 3697099,
-                        "format": "251 - audio only (DASH audio)",
-                        "player_url": "/yts/jsbin/player-vflyoGrhd/en_US/base.js",
-                        "url": "https://r2---sn-p5h-4x1e.googlevideo.com/videoplayback?mime=audio%2Fwebm&pl=21&itag=251&keepalive=yes&sparams=clen%2Cdur%2Cei%2Cgir%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Ckeepalive%2Clmt%2Cmime%2Cmm%2Cmn%2Cms%2Cmv%2Cpl%2Crequiressl%2Csource%2Cexpire&ipbits=0&lmt=1492996921009725&key=yt6&ip=160.178.41.31&expire=1513587525&dur=199.281&initcwndbps=255000&source=youtube&id=o-ADCJr_gxkQP9YeGQVwzX76SNqS8gApLKf5bWcbt3kZoO&gir=yes&mn=sn-p5h-4x1e&mm=31&mv=m&mt=1513565805&ms=au&ei=5S43WoLSFIS1VbXsnpgM&requiressl=yes&clen=3697099&signature=560EB0C7DB2B16EA66A218BCDB6A7CD906ED317C.D45692DDE11CE3B8A7DEAF7FA32D596769A4ED83&ratebypass=yes"
-                    },
-                    {
-                        "http_headers": {
-                            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20150101 Firefox/47.0 (Chrome)",
-                            "Accept-Charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.7",
-                            "Accept-Encoding": "gzip, deflate",
-                            "Accept-Language": "en-us,en;q=0.5",
-                            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
-                        },
-                        "protocol": "https",
-                        "fps": 25,
-                        "acodec": "none",
-                        "format_note": "DASH video",
-                        "format": "160 - 256x144 (DASH video)",
-                        "url": "https://r2---sn-p5h-4x1e.googlevideo.com/videoplayback?id=1f12746323d8bf7e&itag=160&source=youtube&requiressl=yes&mv=m&ei=5i43Wry5D4LgVYvClBg&ms=au&mm=31&pl=21&mn=sn-p5h-4x1e&initcwndbps=255000&ratebypass=yes&mime=video/mp4&gir=yes&clen=1320403&lmt=1507272891167230&dur=199.280&key=dg_yt0&mt=1513565805&signature=9900082CC59650D462F44ECD1CDB52389863AB54.0321E384FBD2DE8C87101519141BF654F4CE7E22&ip=160.178.41.31&ipbits=0&expire=1513587526&sparams=ip,ipbits,expire,id,itag,source,requiressl,mv,ei,ms,mm,pl,mn,initcwndbps,ratebypass,mime,gir,clen,lmt,dur",
-                        "vcodec": "avc1.4d400c",
-                        "ext": "mp4",
-                        "manifest_url": "https://manifest.googlevideo.com/api/manifest/dash/key/yt6/as/fmp4_audio_clear%2Cfmp4_sd_hd_clear/mv/m/sparams/as%2Cei%2Chfr%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmm%2Cmn%2Cms%2Cmv%2Cpl%2Cplayback_host%2Crequiressl%2Csource%2Cexpire/source/youtube/mt/1513565805/itag/0/ei/5i43Wry5D4LgVYvClBg/id/1f12746323d8bf7e/ms/au/mm/31/hfr/1/pl/21/mn/sn-p5h-4x1e/ipbits/0/expire/1513587526/ip/160.178.41.31/initcwndbps/255000/requiressl/yes/signature/BF58F20BABC9C82C55456F94EEDC45CF886E21FA.A365AB40A464826B4AE787E0C0E7CB3DE3FFA376/playback_host/r2---sn-p5h-4x1e.googlevideo.com",
-                        "format_id": "160",
-                        "tbr": 93.97,
-                        "asr": null,
-                        "language": null,
-                        "filesize": 1320403,
-                        "height": 144,
-                        "width": 256
-                    },
-                    {
-                        "vcodec": "vp9",
-                        "ext": "webm",
-                        "format_id": "278",
-                        "http_headers": {
-                            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20150101 Firefox/47.0 (Chrome)",
-                            "Accept-Charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.7",
-                            "Accept-Encoding": "gzip, deflate",
-                            "Accept-Language": "en-us,en;q=0.5",
-                            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
-                        },
-                        "protocol": "https",
-                        "fps": 25,
-                        "acodec": "none",
-                        "tbr": 112.264,
-                        "container": "webm",
-                        "format": "278 - 256x144 (144p)",
-                        "format_note": "144p",
-                        "filesize": 2236419,
-                        "player_url": "/yts/jsbin/player-vflyoGrhd/en_US/base.js",
-                        "width": 256,
-                        "height": 144,
-                        "url": "https://r2---sn-p5h-4x1e.googlevideo.com/videoplayback?mime=video%2Fwebm&pl=21&itag=278&keepalive=yes&sparams=aitags%2Cclen%2Cdur%2Cei%2Cgir%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Ckeepalive%2Clmt%2Cmime%2Cmm%2Cmn%2Cms%2Cmv%2Cpl%2Crequiressl%2Csource%2Cexpire&ipbits=0&lmt=1492997393216527&key=yt6&ip=160.178.41.31&expire=1513587525&dur=199.240&aitags=133%2C134%2C135%2C136%2C137%2C160%2C242%2C243%2C244%2C247%2C248%2C278&initcwndbps=255000&source=youtube&id=o-ADCJr_gxkQP9YeGQVwzX76SNqS8gApLKf5bWcbt3kZoO&gir=yes&mn=sn-p5h-4x1e&mm=31&mv=m&mt=1513565805&ms=au&ei=5S43WoLSFIS1VbXsnpgM&requiressl=yes&clen=2236419&signature=D0FFBAE7D2342A90316AF10C3E138E0B8A16AD3A.0AABBF67FE737EC2FAB97EE119ADDFC1D1281BD9&ratebypass=yes"
-                    },
-                    {
-                        "http_headers": {
-                            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20150101 Firefox/47.0 (Chrome)",
-                            "Accept-Charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.7",
-                            "Accept-Encoding": "gzip, deflate",
-                            "Accept-Language": "en-us,en;q=0.5",
-                            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
-                        },
-                        "protocol": "https",
-                        "fps": 25,
-                        "acodec": "none",
-                        "format_note": "DASH video",
-                        "format": "133 - 426x240 (DASH video)",
-                        "url": "https://r2---sn-p5h-4x1e.googlevideo.com/videoplayback?id=1f12746323d8bf7e&itag=133&source=youtube&requiressl=yes&mv=m&ei=5i43Wry5D4LgVYvClBg&ms=au&mm=31&pl=21&mn=sn-p5h-4x1e&initcwndbps=255000&ratebypass=yes&mime=video/mp4&gir=yes&clen=2335347&lmt=1507272891471894&dur=199.280&key=dg_yt0&mt=1513565805&signature=6CF92A04E2A825AB888298DCBEED22765FF75E38.994902B5255342FF41F5EC5CB4B23865C310FA18&ip=160.178.41.31&ipbits=0&expire=1513587526&sparams=ip,ipbits,expire,id,itag,source,requiressl,mv,ei,ms,mm,pl,mn,initcwndbps,ratebypass,mime,gir,clen,lmt,dur",
-                        "vcodec": "avc1.4d4015",
-                        "ext": "mp4",
-                        "manifest_url": "https://manifest.googlevideo.com/api/manifest/dash/key/yt6/as/fmp4_audio_clear%2Cfmp4_sd_hd_clear/mv/m/sparams/as%2Cei%2Chfr%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmm%2Cmn%2Cms%2Cmv%2Cpl%2Cplayback_host%2Crequiressl%2Csource%2Cexpire/source/youtube/mt/1513565805/itag/0/ei/5i43Wry5D4LgVYvClBg/id/1f12746323d8bf7e/ms/au/mm/31/hfr/1/pl/21/mn/sn-p5h-4x1e/ipbits/0/expire/1513587526/ip/160.178.41.31/initcwndbps/255000/requiressl/yes/signature/BF58F20BABC9C82C55456F94EEDC45CF886E21FA.A365AB40A464826B4AE787E0C0E7CB3DE3FFA376/playback_host/r2---sn-p5h-4x1e.googlevideo.com",
-                        "format_id": "133",
-                        "tbr": 162.045,
-                        "asr": null,
-                        "language": null,
-                        "filesize": 2335347,
-                        "height": 240,
-                        "width": 426
-                    },
-                    {
-                        "vcodec": "vp9",
-                        "ext": "webm",
-                        "format_id": "242",
-                        "http_headers": {
-                            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20150101 Firefox/47.0 (Chrome)",
-                            "Accept-Charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.7",
-                            "Accept-Encoding": "gzip, deflate",
-                            "Accept-Language": "en-us,en;q=0.5",
-                            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
-                        },
-                        "protocol": "https",
-                        "fps": 25,
-                        "acodec": "none",
-                        "tbr": 236.926,
-                        "format": "242 - 426x240 (240p)",
-                        "format_note": "240p",
-                        "filesize": 3513998,
-                        "player_url": "/yts/jsbin/player-vflyoGrhd/en_US/base.js",
-                        "width": 426,
-                        "height": 240,
-                        "url": "https://r2---sn-p5h-4x1e.googlevideo.com/videoplayback?mime=video%2Fwebm&pl=21&itag=242&keepalive=yes&sparams=aitags%2Cclen%2Cdur%2Cei%2Cgir%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Ckeepalive%2Clmt%2Cmime%2Cmm%2Cmn%2Cms%2Cmv%2Cpl%2Crequiressl%2Csource%2Cexpire&ipbits=0&lmt=1492997394391861&key=yt6&ip=160.178.41.31&expire=1513587525&dur=199.240&aitags=133%2C134%2C135%2C136%2C137%2C160%2C242%2C243%2C244%2C247%2C248%2C278&initcwndbps=255000&source=youtube&id=o-ADCJr_gxkQP9YeGQVwzX76SNqS8gApLKf5bWcbt3kZoO&gir=yes&mn=sn-p5h-4x1e&mm=31&mv=m&mt=1513565805&ms=au&ei=5S43WoLSFIS1VbXsnpgM&requiressl=yes&clen=3513998&signature=417C917DA082D27F899A48E3F1B14E28662D491A.44E36C15819EEC6E0700060072B3FC4E0D37455E&ratebypass=yes"
-                    },
-                    {
-                        "http_headers": {
-                            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20150101 Firefox/47.0 (Chrome)",
-                            "Accept-Charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.7",
-                            "Accept-Encoding": "gzip, deflate",
-                            "Accept-Language": "en-us,en;q=0.5",
-                            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
-                        },
-                        "protocol": "https",
-                        "fps": 25,
-                        "acodec": "none",
-                        "format_note": "DASH video",
-                        "format": "134 - 640x360 (DASH video)",
-                        "url": "https://r2---sn-p5h-4x1e.googlevideo.com/videoplayback?id=1f12746323d8bf7e&itag=134&source=youtube&requiressl=yes&mv=m&ei=5i43Wry5D4LgVYvClBg&ms=au&mm=31&pl=21&mn=sn-p5h-4x1e&initcwndbps=255000&ratebypass=yes&mime=video/mp4&gir=yes&clen=5355031&lmt=1507272891676543&dur=199.280&key=dg_yt0&mt=1513565805&signature=6DDEE13431733B17894FB4ACF2C4A59C99447985.3D120746569249127E386987804DF22FA84236EB&ip=160.178.41.31&ipbits=0&expire=1513587526&sparams=ip,ipbits,expire,id,itag,source,requiressl,mv,ei,ms,mm,pl,mn,initcwndbps,ratebypass,mime,gir,clen,lmt,dur",
-                        "vcodec": "avc1.4d401e",
-                        "ext": "mp4",
-                        "manifest_url": "https://manifest.googlevideo.com/api/manifest/dash/key/yt6/as/fmp4_audio_clear%2Cfmp4_sd_hd_clear/mv/m/sparams/as%2Cei%2Chfr%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmm%2Cmn%2Cms%2Cmv%2Cpl%2Cplayback_host%2Crequiressl%2Csource%2Cexpire/source/youtube/mt/1513565805/itag/0/ei/5i43Wry5D4LgVYvClBg/id/1f12746323d8bf7e/ms/au/mm/31/hfr/1/pl/21/mn/sn-p5h-4x1e/ipbits/0/expire/1513587526/ip/160.178.41.31/initcwndbps/255000/requiressl/yes/signature/BF58F20BABC9C82C55456F94EEDC45CF886E21FA.A365AB40A464826B4AE787E0C0E7CB3DE3FFA376/playback_host/r2---sn-p5h-4x1e.googlevideo.com",
-                        "format_id": "134",
-                        "tbr": 348.156,
-                        "asr": null,
-                        "language": null,
-                        "filesize": 5355031,
-                        "height": 360,
-                        "width": 640
-                    },
-                    {
-                        "vcodec": "vp9",
-                        "ext": "webm",
-                        "format_id": "243",
-                        "http_headers": {
-                            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20150101 Firefox/47.0 (Chrome)",
-                            "Accept-Charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.7",
-                            "Accept-Encoding": "gzip, deflate",
-                            "Accept-Language": "en-us,en;q=0.5",
-                            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
-                        },
-                        "protocol": "https",
-                        "fps": 25,
-                        "acodec": "none",
-                        "tbr": 418.704,
-                        "format": "243 - 640x360 (360p)",
-                        "format_note": "360p",
-                        "filesize": 6280052,
-                        "player_url": "/yts/jsbin/player-vflyoGrhd/en_US/base.js",
-                        "width": 640,
-                        "height": 360,
-                        "url": "https://r2---sn-p5h-4x1e.googlevideo.com/videoplayback?mime=video%2Fwebm&pl=21&itag=243&keepalive=yes&sparams=aitags%2Cclen%2Cdur%2Cei%2Cgir%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Ckeepalive%2Clmt%2Cmime%2Cmm%2Cmn%2Cms%2Cmv%2Cpl%2Crequiressl%2Csource%2Cexpire&ipbits=0&lmt=1492997393043222&key=yt6&ip=160.178.41.31&expire=1513587525&dur=199.240&aitags=133%2C134%2C135%2C136%2C137%2C160%2C242%2C243%2C244%2C247%2C248%2C278&initcwndbps=255000&source=youtube&id=o-ADCJr_gxkQP9YeGQVwzX76SNqS8gApLKf5bWcbt3kZoO&gir=yes&mn=sn-p5h-4x1e&mm=31&mv=m&mt=1513565805&ms=au&ei=5S43WoLSFIS1VbXsnpgM&requiressl=yes&clen=6280052&signature=86650E9B1E9265D546B6168030B3B06252FEEBE5.61A2C44D563C4DC35EFE298DC97C154259F0BC6F&ratebypass=yes"
-                    },
-                    {
-                        "http_headers": {
-                            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20150101 Firefox/47.0 (Chrome)",
-                            "Accept-Charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.7",
-                            "Accept-Encoding": "gzip, deflate",
-                            "Accept-Language": "en-us,en;q=0.5",
-                            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
-                        },
-                        "protocol": "https",
-                        "fps": 25,
-                        "acodec": "none",
-                        "format_note": "DASH video",
-                        "format": "135 - 854x480 (DASH video)",
-                        "url": "https://r2---sn-p5h-4x1e.googlevideo.com/videoplayback?id=1f12746323d8bf7e&itag=135&source=youtube&requiressl=yes&mv=m&ei=5i43Wry5D4LgVYvClBg&ms=au&mm=31&pl=21&mn=sn-p5h-4x1e&initcwndbps=255000&ratebypass=yes&mime=video/mp4&gir=yes&clen=10304796&lmt=1507272891474519&dur=199.280&key=dg_yt0&mt=1513565805&signature=2D8BC03D04E35A10220FE1E1D7D6EB07D35396F2.891A4E4B40CF46A5EFC2D03741BBD48BEA327D53&ip=160.178.41.31&ipbits=0&expire=1513587526&sparams=ip,ipbits,expire,id,itag,source,requiressl,mv,ei,ms,mm,pl,mn,initcwndbps,ratebypass,mime,gir,clen,lmt,dur",
-                        "vcodec": "avc1.4d401e",
-                        "ext": "mp4",
-                        "manifest_url": "https://manifest.googlevideo.com/api/manifest/dash/key/yt6/as/fmp4_audio_clear%2Cfmp4_sd_hd_clear/mv/m/sparams/as%2Cei%2Chfr%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmm%2Cmn%2Cms%2Cmv%2Cpl%2Cplayback_host%2Crequiressl%2Csource%2Cexpire/source/youtube/mt/1513565805/itag/0/ei/5i43Wry5D4LgVYvClBg/id/1f12746323d8bf7e/ms/au/mm/31/hfr/1/pl/21/mn/sn-p5h-4x1e/ipbits/0/expire/1513587526/ip/160.178.41.31/initcwndbps/255000/requiressl/yes/signature/BF58F20BABC9C82C55456F94EEDC45CF886E21FA.A365AB40A464826B4AE787E0C0E7CB3DE3FFA376/playback_host/r2---sn-p5h-4x1e.googlevideo.com",
-                        "format_id": "135",
-                        "tbr": 653.469,
-                        "asr": null,
-                        "language": null,
-                        "filesize": 10304796,
-                        "height": 480,
-                        "width": 854
-                    },
-                    {
-                        "vcodec": "vp9",
-                        "ext": "webm",
-                        "format_id": "244",
-                        "http_headers": {
-                            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20150101 Firefox/47.0 (Chrome)",
-                            "Accept-Charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.7",
-                            "Accept-Encoding": "gzip, deflate",
-                            "Accept-Language": "en-us,en;q=0.5",
-                            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
-                        },
-                        "protocol": "https",
-                        "fps": 25,
-                        "acodec": "none",
-                        "tbr": 688.918,
-                        "format": "244 - 854x480 (480p)",
-                        "format_note": "480p",
-                        "filesize": 10096583,
-                        "player_url": "/yts/jsbin/player-vflyoGrhd/en_US/base.js",
-                        "width": 854,
-                        "height": 480,
-                        "url": "https://r2---sn-p5h-4x1e.googlevideo.com/videoplayback?mime=video%2Fwebm&pl=21&itag=244&keepalive=yes&sparams=aitags%2Cclen%2Cdur%2Cei%2Cgir%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Ckeepalive%2Clmt%2Cmime%2Cmm%2Cmn%2Cms%2Cmv%2Cpl%2Crequiressl%2Csource%2Cexpire&ipbits=0&lmt=1492997394181976&key=yt6&ip=160.178.41.31&expire=1513587525&dur=199.240&aitags=133%2C134%2C135%2C136%2C137%2C160%2C242%2C243%2C244%2C247%2C248%2C278&initcwndbps=255000&source=youtube&id=o-ADCJr_gxkQP9YeGQVwzX76SNqS8gApLKf5bWcbt3kZoO&gir=yes&mn=sn-p5h-4x1e&mm=31&mv=m&mt=1513565805&ms=au&ei=5S43WoLSFIS1VbXsnpgM&requiressl=yes&clen=10096583&signature=AEDDF2D96B54685C096AAE4C4E559065A660EF8A.60FBB55594D161348DCCFFC7FD161C45E997F504&ratebypass=yes"
-                    },
-                    {
-                        "http_headers": {
-                            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20150101 Firefox/47.0 (Chrome)",
-                            "Accept-Charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.7",
-                            "Accept-Encoding": "gzip, deflate",
-                            "Accept-Language": "en-us,en;q=0.5",
-                            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
-                        },
-                        "protocol": "https",
-                        "fps": 25,
-                        "acodec": "none",
-                        "format_note": "DASH video",
-                        "format": "136 - 1280x720 (DASH video)",
-                        "url": "https://r2---sn-p5h-4x1e.googlevideo.com/videoplayback?id=1f12746323d8bf7e&itag=136&source=youtube&requiressl=yes&mv=m&ei=5i43Wry5D4LgVYvClBg&ms=au&mm=31&pl=21&mn=sn-p5h-4x1e&initcwndbps=255000&ratebypass=yes&mime=video/mp4&gir=yes&clen=18741598&lmt=1507272891877887&dur=199.280&key=dg_yt0&mt=1513565805&signature=169D8DD08ADCBD663A206F715282E95763D560B3.77ED2CE256F46153446F233D34C1AC04D1F30154&ip=160.178.41.31&ipbits=0&expire=1513587526&sparams=ip,ipbits,expire,id,itag,source,requiressl,mv,ei,ms,mm,pl,mn,initcwndbps,ratebypass,mime,gir,clen,lmt,dur",
-                        "vcodec": "avc1.4d401f",
-                        "ext": "mp4",
-                        "manifest_url": "https://manifest.googlevideo.com/api/manifest/dash/key/yt6/as/fmp4_audio_clear%2Cfmp4_sd_hd_clear/mv/m/sparams/as%2Cei%2Chfr%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmm%2Cmn%2Cms%2Cmv%2Cpl%2Cplayback_host%2Crequiressl%2Csource%2Cexpire/source/youtube/mt/1513565805/itag/0/ei/5i43Wry5D4LgVYvClBg/id/1f12746323d8bf7e/ms/au/mm/31/hfr/1/pl/21/mn/sn-p5h-4x1e/ipbits/0/expire/1513587526/ip/160.178.41.31/initcwndbps/255000/requiressl/yes/signature/BF58F20BABC9C82C55456F94EEDC45CF886E21FA.A365AB40A464826B4AE787E0C0E7CB3DE3FFA376/playback_host/r2---sn-p5h-4x1e.googlevideo.com",
-                        "format_id": "136",
-                        "tbr": 1167.723,
-                        "asr": null,
-                        "language": null,
-                        "filesize": 18741598,
-                        "height": 720,
-                        "width": 1280
-                    },
-                    {
-                        "vcodec": "vp9",
-                        "ext": "webm",
-                        "format_id": "247",
-                        "http_headers": {
-                            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20150101 Firefox/47.0 (Chrome)",
-                            "Accept-Charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.7",
-                            "Accept-Encoding": "gzip, deflate",
-                            "Accept-Language": "en-us,en;q=0.5",
-                            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
-                        },
-                        "protocol": "https",
-                        "fps": 25,
-                        "acodec": "none",
-                        "tbr": 1282.542,
-                        "format": "247 - 1280x720 (720p)",
-                        "format_note": "720p",
-                        "filesize": 19744068,
-                        "player_url": "/yts/jsbin/player-vflyoGrhd/en_US/base.js",
-                        "width": 1280,
-                        "height": 720,
-                        "url": "https://r2---sn-p5h-4x1e.googlevideo.com/videoplayback?mime=video%2Fwebm&pl=21&itag=247&keepalive=yes&sparams=aitags%2Cclen%2Cdur%2Cei%2Cgir%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Ckeepalive%2Clmt%2Cmime%2Cmm%2Cmn%2Cms%2Cmv%2Cpl%2Crequiressl%2Csource%2Cexpire&ipbits=0&lmt=1492997394954481&key=yt6&ip=160.178.41.31&expire=1513587525&dur=199.240&aitags=133%2C134%2C135%2C136%2C137%2C160%2C242%2C243%2C244%2C247%2C248%2C278&initcwndbps=255000&source=youtube&id=o-ADCJr_gxkQP9YeGQVwzX76SNqS8gApLKf5bWcbt3kZoO&gir=yes&mn=sn-p5h-4x1e&mm=31&mv=m&mt=1513565805&ms=au&ei=5S43WoLSFIS1VbXsnpgM&requiressl=yes&clen=19744068&signature=A3703495493FC8750AC003B19921F958C71CB9E4.A4BD30BC221D9FCC908687B7B8B59E56D066E313&ratebypass=yes"
-                    },
-                    {
-                        "http_headers": {
-                            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20150101 Firefox/47.0 (Chrome)",
-                            "Accept-Charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.7",
-                            "Accept-Encoding": "gzip, deflate",
-                            "Accept-Language": "en-us,en;q=0.5",
-                            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
-                        },
-                        "protocol": "https",
-                        "fps": 25,
-                        "acodec": "none",
-                        "format_note": "DASH video",
-                        "format": "137 - 1920x1080 (DASH video)",
-                        "url": "https://r2---sn-p5h-4x1e.googlevideo.com/videoplayback?id=1f12746323d8bf7e&itag=137&source=youtube&requiressl=yes&mv=m&ei=5i43Wry5D4LgVYvClBg&ms=au&mm=31&pl=21&mn=sn-p5h-4x1e&initcwndbps=255000&ratebypass=yes&mime=video/mp4&gir=yes&clen=39142601&lmt=1507272850644759&dur=199.280&key=dg_yt0&mt=1513565805&signature=77BD0A90865F0E343F37AA345867986F5A673E13.3CAC68D28C2A3CAA95B14EEF16695515F0D2500F&ip=160.178.41.31&ipbits=0&expire=1513587526&sparams=ip,ipbits,expire,id,itag,source,requiressl,mv,ei,ms,mm,pl,mn,initcwndbps,ratebypass,mime,gir,clen,lmt,dur",
-                        "vcodec": "avc1.640028",
-                        "ext": "mp4",
-                        "manifest_url": "https://manifest.googlevideo.com/api/manifest/dash/key/yt6/as/fmp4_audio_clear%2Cfmp4_sd_hd_clear/mv/m/sparams/as%2Cei%2Chfr%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmm%2Cmn%2Cms%2Cmv%2Cpl%2Cplayback_host%2Crequiressl%2Csource%2Cexpire/source/youtube/mt/1513565805/itag/0/ei/5i43Wry5D4LgVYvClBg/id/1f12746323d8bf7e/ms/au/mm/31/hfr/1/pl/21/mn/sn-p5h-4x1e/ipbits/0/expire/1513587526/ip/160.178.41.31/initcwndbps/255000/requiressl/yes/signature/BF58F20BABC9C82C55456F94EEDC45CF886E21FA.A365AB40A464826B4AE787E0C0E7CB3DE3FFA376/playback_host/r2---sn-p5h-4x1e.googlevideo.com",
-                        "format_id": "137",
-                        "tbr": 2131.464,
-                        "asr": null,
-                        "language": null,
-                        "filesize": 39142601,
-                        "height": 1080,
-                        "width": 1920
-                    },
-                    {
-                        "vcodec": "vp9",
-                        "ext": "webm",
-                        "format_id": "248",
-                        "http_headers": {
-                            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20150101 Firefox/47.0 (Chrome)",
-                            "Accept-Charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.7",
-                            "Accept-Encoding": "gzip, deflate",
-                            "Accept-Language": "en-us,en;q=0.5",
-                            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
-                        },
-                        "protocol": "https",
-                        "fps": 25,
-                        "acodec": "none",
-                        "tbr": 2469.525,
-                        "format": "248 - 1920x1080 (1080p)",
-                        "format_note": "1080p",
-                        "filesize": 38165799,
-                        "player_url": "/yts/jsbin/player-vflyoGrhd/en_US/base.js",
-                        "width": 1920,
-                        "height": 1080,
-                        "url": "https://r2---sn-p5h-4x1e.googlevideo.com/videoplayback?mime=video%2Fwebm&pl=21&itag=248&keepalive=yes&sparams=aitags%2Cclen%2Cdur%2Cei%2Cgir%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Ckeepalive%2Clmt%2Cmime%2Cmm%2Cmn%2Cms%2Cmv%2Cpl%2Crequiressl%2Csource%2Cexpire&ipbits=0&lmt=1492997077323994&key=yt6&ip=160.178.41.31&expire=1513587525&dur=199.240&aitags=133%2C134%2C135%2C136%2C137%2C160%2C242%2C243%2C244%2C247%2C248%2C278&initcwndbps=255000&source=youtube&id=o-ADCJr_gxkQP9YeGQVwzX76SNqS8gApLKf5bWcbt3kZoO&gir=yes&mn=sn-p5h-4x1e&mm=31&mv=m&mt=1513565805&ms=au&ei=5S43WoLSFIS1VbXsnpgM&requiressl=yes&clen=38165799&signature=02B692372E6919CDC5345770E093D7F634A1164B.9430EE5590B1B1D8BED0575C3F4DD537FCDD71F2&ratebypass=yes"
-                    },
-                    {
-                        "vcodec": "mp4v.20.3",
-                        "ext": "3gp",
-                        "format_id": "17",
-                        "http_headers": {
-                            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20150101 Firefox/47.0 (Chrome)",
-                            "Accept-Charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.7",
-                            "Accept-Encoding": "gzip, deflate",
-                            "Accept-Language": "en-us,en;q=0.5",
-                            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
-                        },
-                        "protocol": "https",
-                        "acodec": "mp4a.40.2",
-                        "abr": 24,
-                        "format": "17 - 176x144 (small)",
-                        "format_note": "small",
-                        "resolution": "176x144",
-                        "player_url": "/yts/jsbin/player-vflyoGrhd/en_US/base.js",
-                        "width": 176,
-                        "height": 144,
-                        "url": "https://r2---sn-p5h-4x1e.googlevideo.com/videoplayback?mime=video%2F3gpp&pl=21&itag=17&sparams=clen%2Cdur%2Cei%2Cgir%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Clmt%2Cmime%2Cmm%2Cmn%2Cms%2Cmv%2Cpl%2Crequiressl%2Csource%2Cexpire&ipbits=0&lmt=1453815993528088&key=yt6&ip=160.178.41.31&expire=1513587525&dur=199.366&initcwndbps=255000&source=youtube&id=o-ADCJr_gxkQP9YeGQVwzX76SNqS8gApLKf5bWcbt3kZoO&gir=yes&mn=sn-p5h-4x1e&mm=31&mv=m&mt=1513565805&ms=au&ei=5S43WoLSFIS1VbXsnpgM&requiressl=yes&clen=1922065&signature=133855AF9092C5A189CB4E09ABCFBB0C5F8A44F1.2024D804F9BD40D107FCEFD2860F54727A8CBED6&ratebypass=yes"
-                    },
-                    {
-                        "vcodec": "mp4v.20.3",
-                        "ext": "3gp",
-                        "format_id": "36",
-                        "http_headers": {
-                            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20150101 Firefox/47.0 (Chrome)",
-                            "Accept-Charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.7",
-                            "Accept-Encoding": "gzip, deflate",
-                            "Accept-Language": "en-us,en;q=0.5",
-                            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
-                        },
-                        "protocol": "https",
-                        "acodec": "mp4a.40.2",
-                        "format": "36 - 320x180 (small)",
-                        "format_note": "small",
-                        "resolution": "320x180",
-                        "player_url": "/yts/jsbin/player-vflyoGrhd/en_US/base.js",
-                        "width": 320,
-                        "height": 180,
-                        "url": "https://r2---sn-p5h-4x1e.googlevideo.com/videoplayback?mime=video%2F3gpp&pl=21&itag=36&sparams=clen%2Cdur%2Cei%2Cgir%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Clmt%2Cmime%2Cmm%2Cmn%2Cms%2Cmv%2Cpl%2Crequiressl%2Csource%2Cexpire&ipbits=0&lmt=1453815995129782&key=yt6&ip=160.178.41.31&expire=1513587525&dur=199.366&initcwndbps=255000&source=youtube&id=o-ADCJr_gxkQP9YeGQVwzX76SNqS8gApLKf5bWcbt3kZoO&gir=yes&mn=sn-p5h-4x1e&mm=31&mv=m&mt=1513565805&ms=au&ei=5S43WoLSFIS1VbXsnpgM&requiressl=yes&clen=5299422&signature=6F5DC57EB4B9B98FFD4B6AA3CD977850DF1331BE.CFAF3A6B7328143AE910E050870997C1353A5293&ratebypass=yes"
-                    },
-                    {
-                        "vcodec": "vp8.0",
-                        "ext": "webm",
-                        "format_id": "43",
-                        "http_headers": {
-                            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20150101 Firefox/47.0 (Chrome)",
-                            "Accept-Charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.7",
-                            "Accept-Encoding": "gzip, deflate",
-                            "Accept-Language": "en-us,en;q=0.5",
-                            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
-                        },
-                        "protocol": "https",
-                        "acodec": "vorbis",
-                        "abr": 128,
-                        "format": "43 - 640x360 (medium)",
-                        "format_note": "medium",
-                        "resolution": "640x360",
-                        "player_url": "/yts/jsbin/player-vflyoGrhd/en_US/base.js",
-                        "width": 640,
-                        "height": 360,
-                        "url": "https://r2---sn-p5h-4x1e.googlevideo.com/videoplayback?mime=video%2Fwebm&pl=21&itag=43&sparams=clen%2Cdur%2Cei%2Cgir%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Clmt%2Cmime%2Cmm%2Cmn%2Cms%2Cmv%2Cpl%2Cratebypass%2Crequiressl%2Csource%2Cexpire&ipbits=0&lmt=1453816690347396&key=yt6&ip=160.178.41.31&expire=1513587525&dur=0.000&initcwndbps=255000&source=youtube&id=o-ADCJr_gxkQP9YeGQVwzX76SNqS8gApLKf5bWcbt3kZoO&gir=yes&ratebypass=yes&mn=sn-p5h-4x1e&mm=31&mv=m&mt=1513565805&ms=au&ei=5S43WoLSFIS1VbXsnpgM&requiressl=yes&clen=15289957&signature=5A7109AD06E943BFAD2571904D9B7B94AB9AE191.28A06D56BE971CFC8D30ADFA20E0ACA888B50009"
-                    },
-                    {
-                        "vcodec": "avc1.42001E",
-                        "ext": "mp4",
-                        "format_id": "18",
-                        "http_headers": {
-                            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20150101 Firefox/47.0 (Chrome)",
-                            "Accept-Charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.7",
-                            "Accept-Encoding": "gzip, deflate",
-                            "Accept-Language": "en-us,en;q=0.5",
-                            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
-                        },
-                        "protocol": "https",
-                        "acodec": "mp4a.40.2",
-                        "abr": 96,
-                        "format": "18 - 640x360 (medium)",
-                        "format_note": "medium",
-                        "resolution": "640x360",
-                        "player_url": "/yts/jsbin/player-vflyoGrhd/en_US/base.js",
-                        "width": 640,
-                        "height": 360,
-                        "url": "https://r2---sn-p5h-4x1e.googlevideo.com/videoplayback?mime=video%2Fmp4&pl=21&itag=18&sparams=clen%2Cdur%2Cei%2Cgir%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Clmt%2Cmime%2Cmm%2Cmn%2Cms%2Cmv%2Cpl%2Cratebypass%2Crequiressl%2Csource%2Cexpire&ipbits=0&lmt=1458188915370537&key=yt6&ip=160.178.41.31&expire=1513587525&dur=199.343&initcwndbps=255000&source=youtube&id=o-ADCJr_gxkQP9YeGQVwzX76SNqS8gApLKf5bWcbt3kZoO&gir=yes&ratebypass=yes&mn=sn-p5h-4x1e&mm=31&mv=m&mt=1513565805&ms=au&ei=5S43WoLSFIS1VbXsnpgM&requiressl=yes&clen=10232468&signature=781C27C498999E5AA29C10412F83A5F63EC83ABF.E4328AC4D802B53D7D86C308B2F53BAD5695B1E9"
-                    },
-                    {
-                        "vcodec": "avc1.64001F",
-                        "ext": "mp4",
-                        "format_id": "22",
-                        "http_headers": {
-                            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20150101 Firefox/47.0 (Chrome)",
-                            "Accept-Charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.7",
-                            "Accept-Encoding": "gzip, deflate",
-                            "Accept-Language": "en-us,en;q=0.5",
-                            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
-                        },
-                        "protocol": "https",
-                        "acodec": "mp4a.40.2",
-                        "abr": 192,
-                        "format": "22 - 1280x720 (hd720)",
-                        "format_note": "hd720",
-                        "resolution": "1280x720",
-                        "player_url": "/yts/jsbin/player-vflyoGrhd/en_US/base.js",
-                        "width": 1280,
-                        "height": 720,
-                        "url": "https://r2---sn-p5h-4x1e.googlevideo.com/videoplayback?mime=video%2Fmp4&lmt=1507273044355354&key=yt6&ip=160.178.41.31&pl=21&itag=22&dur=199.343&expire=1513587525&initcwndbps=255000&source=youtube&id=o-ADCJr_gxkQP9YeGQVwzX76SNqS8gApLKf5bWcbt3kZoO&ratebypass=yes&mn=sn-p5h-4x1e&mm=31&ipbits=0&mv=m&mt=1513565805&ms=au&ei=5S43WoLSFIS1VbXsnpgM&requiressl=yes&sparams=dur%2Cei%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Clmt%2Cmime%2Cmm%2Cmn%2Cms%2Cmv%2Cpl%2Cratebypass%2Crequiressl%2Csource%2Cexpire&signature=DE54C4A0066A1C8E23153D0AA4700932E09DF885.7FDD8EC08389ED4A6DF023F799A70BBC323737F9"
-                    }
-                ]
+                "data": {
+                    "download_id": "nLXi0eaNo57p5OCmqqGoqLbQxqG249yh5MrslJpyqn622b2DzejCxt-rZQ",
+                    "source": "Youtube",
+                    "link": "https://www.youtube.com/watch?v=HxJ0YyPYv34",
+                    "webpage_url": "https://www.youtube.com/watch?v=HxJ0YyPYv34",
+                    "title": "Ghali -  Vai Tra  (Prod. Chris Nolan)",
+                    "description": "Segui Ghali:\nFacebook: http://on.fb.me/1DUthR3\nTwitter: http://bit.ly/1EsFvkn\nInstagram: http://bit.ly/1nfpCZ2\nSoundcloud: http://bit.ly/1GFqj33\n\nSegui Chris Nolan:\nFacebook: http://bit.ly/1HPRyKS\nInstagram: http://bit.ly/23IN591\n\nRegia di Jamie Robert Othieno & Alessandro Murdaca\n\nSegui Alessandro Murdaca:\nE-mail: info@alessandromurdaca.com\nFacebook: http://on.fb.me/1Kl7uS0\nTwitter: http://bit.ly/1NuVSRG\nInstagram: http://bit.ly/1Fdpf9I\n\nSegui Jamie Robert Othieno:\nFacebook: https://www.facebook.com/jamierobertf...\nTumblr: http://bit.ly/1QK1Xvs\nInstagram: http://bit.ly/1X4RRVz\n\nNinna nanna - Nuovo Video Ufficiale\nhttps://www.youtube.com/watch?v=s1xbQVNGSPQ\n\nGhali - Guarda tutti i video ufficiali....\nhttps://www.youtube.com/playlist?list=PLEjNW3XN7fMLeMrK9i-h_6ECbAqbMqtGN",
+                    "filename": "Ghali -  Vai Tra  (Prod. Chris Nolan)",
+                    "artist": "Ghali",
+                    "track": "Vai Tra  (Prod. Chris Nolan)",
+                    "uploader": "Ghali",
+                    "download_link": "http://converterapi.local/download/nLXi0eaNo57p5OCmqqGoqLbQxqG249yh5MrslJpyqn622b2DzejCxt-rZQ",
+                    "thumbnail": "https://i.ytimg.com/vi/HxJ0YyPYv34/maxresdefault.jpg",
+                    "formats": [...]
+                }
             }
-        }
 
 + Response 200 (application/json)
 
     + Body
         
-        {
-            "status": "fail or error",
-            "data": {
-                "code": "xxx", #3 digit error code - check read me.
-                "message": "Some details about the error."
+            {
+                "status": "fail or error",
+                "data": {
+                    "code": "xxx", #3 digit error code - check readme.
+                    "message": "Some details about the error."
+                }
             }
-        }
 
 ## Supported sites list [/supported]
 
@@ -652,19 +115,19 @@ Returns an array of all supported sites.
 
     + Schema
 
-        [
-            "site1",
-            "site2",
-            ...
-        ]
+            [
+                "site1",
+                "site2",
+                ...
+            ]
 
     + Body
 
-        [
-            "site1",
-            "site2",
-            ...
-        ]
+            [
+                "site1",
+                "site2",
+                ...
+            ]
 
 ## Fetch available download formats [/download/id/formats]
 
@@ -672,167 +135,167 @@ Fetched the available formats for the download identified by "id".
 
 ### Fetch available download formats [GET]
 
-Returns an array of all supported sites.
+Returns an array of all the available formats.
 
 + Response 200 (application/json)
 
     + Schema
 
-        [
-            {
-                "format_id": "",
-                "extention": "",
-                "description": "",
-                "download_link": "http://converterapi.local/v1/download/id/139"
-            },
-            ...
-        ]
+            [
+                {
+                    "format_id": "",
+                    "extention": "",
+                    "description": "",
+                    "download_link": "http://converterapi.local/v1/download/id/139"
+                },
+                ...
+            ]
 
     + Body
 
-        [
-            {
-                "format_id": "139",
-                "extention": "m4a",
-                "description": "audio only (DASH audio)",
-                "download_link": "http://converterapi.local/v1/download/id/139"
-            },
-            {
-                "format_id": "249",
-                "extention": "webm",
-                "description": "audio only (DASH audio)",
-                "download_link": "http://converterapi.local/v1/download/id/249"
-            },
-            {
-                "format_id": "250",
-                "extention": "webm",
-                "description": "audio only (DASH audio)",
-                "download_link": "http://converterapi.local/v1/download/id/250"
-            },
-            {
-                "format_id": "140",
-                "extention": "m4a",
-                "description": "audio only (DASH audio)",
-                "download_link": "http://converterapi.local/v1/download/id/140"
-            },
-            {
-                "format_id": "171",
-                "extention": "webm",
-                "description": "audio only (DASH audio)",
-                "download_link": "http://converterapi.local/v1/download/id/171"
-            },
-            {
-                "format_id": "251",
-                "extention": "webm",
-                "description": "audio only (DASH audio)",
-                "download_link": "http://converterapi.local/v1/download/id/251"
-            },
-            {
-                "format_id": "160",
-                "extention": "mp4",
-                "description": "256x144 (DASH video)",
-                "download_link": "http://converterapi.local/v1/download/id/160"
-            },
-            {
-                "format_id": "278",
-                "extention": "webm",
-                "description": "256x144 (144p)",
-                "download_link": "http://converterapi.local/v1/download/id/278"
-            },
-            {
-                "format_id": "133",
-                "extention": "mp4",
-                "description": "426x240 (DASH video)",
-                "download_link": "http://converterapi.local/v1/download/id/133"
-            },
-            {
-                "format_id": "242",
-                "extention": "webm",
-                "description": "426x240 (240p)",
-                "download_link": "http://converterapi.local/v1/download/id/242"
-            },
-            {
-                "format_id": "134",
-                "extention": "mp4",
-                "description": "640x360 (DASH video)",
-                "download_link": "http://converterapi.local/v1/download/id/134"
-            },
-            {
-                "format_id": "243",
-                "extention": "webm",
-                "description": "640x360 (360p)",
-                "download_link": "http://converterapi.local/v1/download/id/243"
-            },
-            {
-                "format_id": "244",
-                "extention": "webm",
-                "description": "854x480 (480p)",
-                "download_link": "http://converterapi.local/v1/download/id/244"
-            },
-            {
-                "format_id": "135",
-                "extention": "mp4",
-                "description": "854x480 (DASH video)",
-                "download_link": "http://converterapi.local/v1/download/id/135"
-            },
-            {
-                "format_id": "136",
-                "extention": "mp4",
-                "description": "1280x720 (DASH video)",
-                "download_link": "http://converterapi.local/v1/download/id/136"
-            },
-            {
-                "format_id": "247",
-                "extention": "webm",
-                "description": "1280x720 (720p)",
-                "download_link": "http://converterapi.local/v1/download/id/247"
-            },
-            {
-                "format_id": "137",
-                "extention": "mp4",
-                "description": "1920x1080 (DASH video)",
-                "download_link": "http://converterapi.local/v1/download/id/137"
-            },
-            {
-                "format_id": "248",
-                "extention": "webm",
-                "description": "1920x1080 (1080p)",
-                "download_link": "http://converterapi.local/v1/download/id/248"
-            },
-            {
-                "format_id": "17",
-                "extention": "3gp",
-                "description": "176x144 (small)",
-                "download_link": "http://converterapi.local/v1/download/id/17"
-            },
-            {
-                "format_id": "36",
-                "extention": "3gp",
-                "description": "320x180 (small)",
-                "download_link": "http://converterapi.local/v1/download/id/36"
-            },
-            {
-                "format_id": "43",
-                "extention": "webm",
-                "description": "640x360 (medium)",
-                "download_link": "http://converterapi.local/v1/download/id/43"
-            },
-            {
-                "format_id": "18",
-                "extention": "mp4",
-                "description": "640x360 (medium)",
-                "download_link": "http://converterapi.local/v1/download/id/18"
-            },
-            {
-                "format_id": "22",
-                "extention": "mp4",
-                "description": "1280x720 (hd720)",
-                "download_link": "http://converterapi.local/v1/download/id/22"
-            },
-            {
-                "format_id": "999",
-                "extention": "mp3",
-                "description": "MP3 audio",
-                "download_link": "http://converterapi.local/v1/download/id/999"
-            }
-        ]
+            [
+                {
+                    "format_id": "139",
+                    "extention": "m4a",
+                    "description": "audio only (DASH audio)",
+                    "download_link": "http://converterapi.local/v1/download/id/139"
+                },
+                {
+                    "format_id": "249",
+                    "extention": "webm",
+                    "description": "audio only (DASH audio)",
+                    "download_link": "http://converterapi.local/v1/download/id/249"
+                },
+                {
+                    "format_id": "250",
+                    "extention": "webm",
+                    "description": "audio only (DASH audio)",
+                    "download_link": "http://converterapi.local/v1/download/id/250"
+                },
+                {
+                    "format_id": "140",
+                    "extention": "m4a",
+                    "description": "audio only (DASH audio)",
+                    "download_link": "http://converterapi.local/v1/download/id/140"
+                },
+                {
+                    "format_id": "171",
+                    "extention": "webm",
+                    "description": "audio only (DASH audio)",
+                    "download_link": "http://converterapi.local/v1/download/id/171"
+                },
+                {
+                    "format_id": "251",
+                    "extention": "webm",
+                    "description": "audio only (DASH audio)",
+                    "download_link": "http://converterapi.local/v1/download/id/251"
+                },
+                {
+                    "format_id": "160",
+                    "extention": "mp4",
+                    "description": "256x144 (DASH video)",
+                    "download_link": "http://converterapi.local/v1/download/id/160"
+                },
+                {
+                    "format_id": "278",
+                    "extention": "webm",
+                    "description": "256x144 (144p)",
+                    "download_link": "http://converterapi.local/v1/download/id/278"
+                },
+                {
+                    "format_id": "133",
+                    "extention": "mp4",
+                    "description": "426x240 (DASH video)",
+                    "download_link": "http://converterapi.local/v1/download/id/133"
+                },
+                {
+                    "format_id": "242",
+                    "extention": "webm",
+                    "description": "426x240 (240p)",
+                    "download_link": "http://converterapi.local/v1/download/id/242"
+                },
+                {
+                    "format_id": "134",
+                    "extention": "mp4",
+                    "description": "640x360 (DASH video)",
+                    "download_link": "http://converterapi.local/v1/download/id/134"
+                },
+                {
+                    "format_id": "243",
+                    "extention": "webm",
+                    "description": "640x360 (360p)",
+                    "download_link": "http://converterapi.local/v1/download/id/243"
+                },
+                {
+                    "format_id": "244",
+                    "extention": "webm",
+                    "description": "854x480 (480p)",
+                    "download_link": "http://converterapi.local/v1/download/id/244"
+                },
+                {
+                    "format_id": "135",
+                    "extention": "mp4",
+                    "description": "854x480 (DASH video)",
+                    "download_link": "http://converterapi.local/v1/download/id/135"
+                },
+                {
+                    "format_id": "136",
+                    "extention": "mp4",
+                    "description": "1280x720 (DASH video)",
+                    "download_link": "http://converterapi.local/v1/download/id/136"
+                },
+                {
+                    "format_id": "247",
+                    "extention": "webm",
+                    "description": "1280x720 (720p)",
+                    "download_link": "http://converterapi.local/v1/download/id/247"
+                },
+                {
+                    "format_id": "137",
+                    "extention": "mp4",
+                    "description": "1920x1080 (DASH video)",
+                    "download_link": "http://converterapi.local/v1/download/id/137"
+                },
+                {
+                    "format_id": "248",
+                    "extention": "webm",
+                    "description": "1920x1080 (1080p)",
+                    "download_link": "http://converterapi.local/v1/download/id/248"
+                },
+                {
+                    "format_id": "17",
+                    "extention": "3gp",
+                    "description": "176x144 (small)",
+                    "download_link": "http://converterapi.local/v1/download/id/17"
+                },
+                {
+                    "format_id": "36",
+                    "extention": "3gp",
+                    "description": "320x180 (small)",
+                    "download_link": "http://converterapi.local/v1/download/id/36"
+                },
+                {
+                    "format_id": "43",
+                    "extention": "webm",
+                    "description": "640x360 (medium)",
+                    "download_link": "http://converterapi.local/v1/download/id/43"
+                },
+                {
+                    "format_id": "18",
+                    "extention": "mp4",
+                    "description": "640x360 (medium)",
+                    "download_link": "http://converterapi.local/v1/download/id/18"
+                },
+                {
+                    "format_id": "22",
+                    "extention": "mp4",
+                    "description": "1280x720 (hd720)",
+                    "download_link": "http://converterapi.local/v1/download/id/22"
+                },
+                {
+                    "format_id": "999",
+                    "extention": "mp3",
+                    "description": "MP3 audio",
+                    "download_link": "http://converterapi.local/v1/download/id/999"
+                }
+            ]
