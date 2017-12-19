@@ -64,15 +64,27 @@ function getPlaylistID($url){
     return $params['list'];
 }
 function getDBVideoInfo($hash){
+    /*
+     * Because I'm so lazy, I'm add the cache here.
+     */
+    
     global $pdo;
-    $sql = 'SELECT * FROM downloads WHERE response_id = ? LIMIT 1';
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([$hash]);
-    $row = $stmt->fetch();
-    if(!$row){
-        return False;
+    global $redis;
+
+    if($_ENV['cache'] == "TRUE" && $redis->exists($hash)){
+        return [
+            'response' => $redis->get($hash)
+        ];
     }else{
-        return $row;
+        $sql = 'SELECT * FROM downloads WHERE response_id = ? LIMIT 1';
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$hash]);
+        $row = $stmt->fetch();
+        if(!$row){
+            return False;
+        }else{
+            return $row;
+        }
     }
 }
 function getDBPlaylistInfo($id){

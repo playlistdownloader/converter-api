@@ -17,6 +17,7 @@ $this->respond('GET', '/', function ($request, $response) {
 $this->respond('POST','/fetch',function ($request, $response) {
     global $logger;
     global $pdo;
+    global $redis;
     # Fetches the download infos
     $body = $request->body();
     $bodyArray = Json::decode($body);
@@ -54,10 +55,14 @@ $this->respond('POST','/fetch',function ($request, $response) {
                             $stmt = $pdo->prepare("INSERT INTO downloads(response_id, response, timestamp)
                             VALUES(:hash, :response, :time)");
                             $stmt->execute(array(
-                            "hash" => $hash,
-                            "response" => $response,
-                            "time" => time()
-                        ));
+                                "hash" => $hash,
+                                "response" => $response,
+                                "time" => time()
+                            ));
+                            // Add to cache
+                            if($_ENV['cache'] == "TRUE"){
+                                $redis->set($hash, $response);
+                            }
                         } catch (PDOException $ex) {
                             // Re-throw exception if it wasn't a constraint violation.
                             if ($ex->getCode() != 23000) {
@@ -106,6 +111,10 @@ $this->respond('POST','/fetch',function ($request, $response) {
                                 "response" => $response,
                                 "time" => time()
                             ));
+                            // Add to cache
+                            if($_ENV['cache'] == "TRUE"){
+                                $redis->set($hash, $response);
+                            }
                             } catch (PDOException $ex) {
                                 // Re-throw exception if it wasn't a constraint violation.
                                 if ($ex->getCode() != 23000) {
@@ -171,6 +180,10 @@ $this->respond('POST','/fetch',function ($request, $response) {
                                 "response" => $response,
                                 "time" => time()
                             ));
+                            // Add to cache
+                            if($_ENV['cache'] == "TRUE"){
+                                $redis->set($hash, $response);
+                            }
                         } catch (PDOException $ex) {
                             // Re-throw exception if it wasn't a constraint violation.
                             if ($ex->getCode() != 23000) {
@@ -225,6 +238,10 @@ $this->respond('POST','/fetch',function ($request, $response) {
                                     "response" => $response,
                                     "time" => time()
                                 ));
+                                // Add to cache
+                                if($_ENV['cache'] == "TRUE"){
+                                    $redis->set($hash, $response);
+                                }
                                 } catch (PDOException $ex) {
                                     // Re-throw exception if it wasn't a constraint violation.
                                     if ($ex->getCode() != 23000) {
@@ -268,6 +285,10 @@ $this->respond('POST','/fetch',function ($request, $response) {
                                         "response" => $response,
                                         "time" => time()
                                     ));
+                                    // Add to cache
+                                    if($_ENV['cache'] == "TRUE"){
+                                        $redis->set($hash, $response);
+                                    }
                                 } catch (PDOException $ex) {
                                     // Re-throw exception if it wasn't a constraint violation.
                                     if ($ex->getCode() != 23000) {
@@ -310,6 +331,10 @@ $this->respond('POST','/fetch',function ($request, $response) {
                             "response" => $response,
                             "time" => time()
                         ));
+                        // Add to cache
+                        if($_ENV['cache'] == "TRUE"){
+                            $redis->set($hash, $response);
+                        }
                         } catch (PDOException $ex) {
                             // Re-throw exception if it wasn't a constraint violation.
                             if ($ex->getCode() != 23000) {
@@ -350,6 +375,10 @@ $this->respond('POST','/fetch',function ($request, $response) {
                                 "response" => $res,
                                 "time" => time()
                             ));
+                            // Add to cache
+                            if($_ENV['cache'] == "TRUE"){
+                                $redis->set($hash, $response);
+                            }
                         } catch (PDOException $ex) {
                             // Re-throw exception if it wasn't a constraint violation.
                             if ($ex->getCode() != 23000) {
