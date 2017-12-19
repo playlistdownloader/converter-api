@@ -60,7 +60,7 @@ $this->respond('POST','/fetch',function ($request, $response) {
                                 "time" => time()
                             ));
                             // Add to cache
-                            if($_ENV['cache'] == "TRUE"){
+                            if($_ENV['CACHE'] == "TRUE"){
                                 $redis->set($hash, $response);
                             }
                         } catch (PDOException $ex) {
@@ -112,7 +112,7 @@ $this->respond('POST','/fetch',function ($request, $response) {
                                 "time" => time()
                             ));
                             // Add to cache
-                            if($_ENV['cache'] == "TRUE"){
+                            if($_ENV['CACHE'] == "TRUE"){
                                 $redis->set($hash, $response);
                             }
                             } catch (PDOException $ex) {
@@ -181,7 +181,7 @@ $this->respond('POST','/fetch',function ($request, $response) {
                                 "time" => time()
                             ));
                             // Add to cache
-                            if($_ENV['cache'] == "TRUE"){
+                            if($_ENV['CACHE'] == "TRUE"){
                                 $redis->set($hash, $response);
                             }
                         } catch (PDOException $ex) {
@@ -239,7 +239,7 @@ $this->respond('POST','/fetch',function ($request, $response) {
                                     "time" => time()
                                 ));
                                 // Add to cache
-                                if($_ENV['cache'] == "TRUE"){
+                                if($_ENV['CACHE'] == "TRUE"){
                                     $redis->set($hash, $response);
                                 }
                                 } catch (PDOException $ex) {
@@ -286,7 +286,7 @@ $this->respond('POST','/fetch',function ($request, $response) {
                                         "time" => time()
                                     ));
                                     // Add to cache
-                                    if($_ENV['cache'] == "TRUE"){
+                                    if($_ENV['CACHE'] == "TRUE"){
                                         $redis->set($hash, $response);
                                     }
                                 } catch (PDOException $ex) {
@@ -332,7 +332,7 @@ $this->respond('POST','/fetch',function ($request, $response) {
                             "time" => time()
                         ));
                         // Add to cache
-                        if($_ENV['cache'] == "TRUE"){
+                        if($_ENV['CACHE'] == "TRUE"){
                             $redis->set($hash, $response);
                         }
                         } catch (PDOException $ex) {
@@ -376,7 +376,7 @@ $this->respond('POST','/fetch',function ($request, $response) {
                                 "time" => time()
                             ));
                             // Add to cache
-                            if($_ENV['cache'] == "TRUE"){
+                            if($_ENV['CACHE'] == "TRUE"){
                                 $redis->set($hash, $response);
                             }
                         } catch (PDOException $ex) {

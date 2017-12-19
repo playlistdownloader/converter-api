@@ -71,7 +71,7 @@ function getDBVideoInfo($hash){
     global $pdo;
     global $redis;
 
-    if($_ENV['cache'] == "TRUE" && $redis->exists($hash)){
+    if($_ENV['CACHE'] == "TRUE" && $redis->exists($hash)){
         return [
             'response' => $redis->get($hash)
         ];
