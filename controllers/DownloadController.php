@@ -84,7 +84,7 @@ $this->respond('GET', '/[:id]/[i:format_id]', function ($request, $response, $se
         if($request->format_id == "999"){
             $formats['999'] = "mp3";
         }elseif($request->format_id == "9999"){
-            $formats['999'] = "mp4";
+            $formats['9999'] = "mp4";
         }else{
             foreach($downloadInfoData['formats'] as $format){
                 $formatID = $format['format_id'];
