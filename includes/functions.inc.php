@@ -64,15 +64,27 @@ function getPlaylistID($url){
     return $params['list'];
 }
 function getDBVideoInfo($hash){
+    /*
+     * Because I'm so lazy, I'm add the cache here.
+     */
+    
     global $pdo;
-    $sql = 'SELECT * FROM downloads WHERE response_id = ? LIMIT 1';
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([$hash]);
-    $row = $stmt->fetch();
-    if(!$row){
-        return False;
+    global $redis;
+
+    if($_ENV['CACHE'] == "TRUE" && $redis->exists($hash)){
+        return [
+            'response' => $redis->get($hash)
+        ];
     }else{
-        return $row;
+        $sql = 'SELECT * FROM downloads WHERE response_id = ? LIMIT 1';
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$hash]);
+        $row = $stmt->fetch();
+        if(!$row){
+            return False;
+        }else{
+            return $row;
+        }
     }
 }
 function getDBPlaylistInfo($id){
@@ -268,9 +280,13 @@ function downloadFile($link,$format,$ext,$audio){
             incrementConversions();
             $cmd = 'youtube-dl --add-metadata --extract-audio --audio-format mp3  --output '.$downloadFolder.'/"'.$id.'-delete.%(ext)s" '.$link;
         }else{
-            incrementDownloads();
-            $cmd = 'youtube-dl -f '.$format.' --output '.$downloadFolder.'/"'.$id.'-delete.%(ext)s" '.$link;
-        }
+            if($format == "9999"){
+                incrementConversions();
+                $cmd = 'youtube-dl -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio/best"  --merge-output-format mp4 --output '.$downloadFolder.'/"'.$id.'-delete.%(ext)s" '.$link;
+            }else{
+                incrementDownloads();
+                $cmd = 'youtube-dl -f '.$format.' --output '.$downloadFolder.'/"'.$id.'-delete.%(ext)s" '.$link;
+            }}
 		$excecute = shell_exec($cmd);
 		return $output;
 	}

@@ -1,80 +1,301 @@
 FORMAT: 1A
-HOST: http://polls.apiblueprint.org/
+HOST: https://stormiix.github.io/converter-api/
 
 # Converter API
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+Convert-API is a powerful yet simple PHP API for media download & conversion, it allows you to download and convert video & audio from +800 sites.
 
-## Questions Collection [/questions]
+# Features
 
-### List All Questions [GET]
+## Download [/fetch]
 
-+ Response 200 (application/json)
+Creating a new download!
 
-        [
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
-            }
-        ]
+### Create a New Download [POST]
 
-### Create a New Question [POST]
+Creating a new download fetches basic info and provides you the download links and
+also available formats and other information.
 
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
++ Parameters
+    + key (string)
+        Your API key
+    + url (string)
+        The link of a video/audio.
 
 + Request (application/json)
 
-        {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
-        }
+            {
+                "key": "enter-your-API-key-here",
+                "url": "https://www.youtube.com/watch?v=HxJ0YyPYv34"
+            }
 
 + Response 201 (application/json)
 
-    + Headers
+    + Schema
 
-            Location: /questions/2
+            {
+                "status": "success",
+                "download_id": "a unique id",
+                "data": {
+                    "download_id": "a unique id",
+                    "source": "", #Not always added
+                    "link": "",
+                    "webpage_url": "",
+                    "title": "",
+                    "description": "",
+                    "filename": "",
+                    "artist": "",
+                    "track": "",
+                    "uploader": "",
+                    "download_link": "http://converterapi.local/download/unique_id",
+                    "thumbnail": "",
+                    "formats": [
+                        {
+                            "fps": "",
+                            "acodec": "",
+                            "abr": xx,
+                            "container": "",
+                            "format_note": "",
+                            "format": "",
+                            "url": "",
+                            "vcodec": "",
+                            "ext": "",
+                            "format_id": "xxx",
+                            "filesize": 1186541,
+                            "height": "",
+                            "width": ""
+                        } 
+                    ]
+                }
+            }
 
     + Body
 
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
+                "status": "success",
+                "download_id": "nLXi0eaNo57p5OCmqqGoqLbQxqG249yh5MrslJpyqn622b2DzejCxt-rZQ",
+                "data": {
+                    "download_id": "nLXi0eaNo57p5OCmqqGoqLbQxqG249yh5MrslJpyqn622b2DzejCxt-rZQ",
+                    "source": "Youtube",
+                    "link": "https://www.youtube.com/watch?v=HxJ0YyPYv34",
+                    "webpage_url": "https://www.youtube.com/watch?v=HxJ0YyPYv34",
+                    "title": "Ghali -  Vai Tra  (Prod. Chris Nolan)",
+                    "description": "Segui Ghali:\nFacebook: http://on.fb.me/1DUthR3\nTwitter: http://bit.ly/1EsFvkn\nInstagram: http://bit.ly/1nfpCZ2\nSoundcloud: http://bit.ly/1GFqj33\n\nSegui Chris Nolan:\nFacebook: http://bit.ly/1HPRyKS\nInstagram: http://bit.ly/23IN591\n\nRegia di Jamie Robert Othieno & Alessandro Murdaca\n\nSegui Alessandro Murdaca:\nE-mail: info@alessandromurdaca.com\nFacebook: http://on.fb.me/1Kl7uS0\nTwitter: http://bit.ly/1NuVSRG\nInstagram: http://bit.ly/1Fdpf9I\n\nSegui Jamie Robert Othieno:\nFacebook: https://www.facebook.com/jamierobertf...\nTumblr: http://bit.ly/1QK1Xvs\nInstagram: http://bit.ly/1X4RRVz\n\nNinna nanna - Nuovo Video Ufficiale\nhttps://www.youtube.com/watch?v=s1xbQVNGSPQ\n\nGhali - Guarda tutti i video ufficiali....\nhttps://www.youtube.com/playlist?list=PLEjNW3XN7fMLeMrK9i-h_6ECbAqbMqtGN",
+                    "filename": "Ghali -  Vai Tra  (Prod. Chris Nolan)",
+                    "artist": "Ghali",
+                    "track": "Vai Tra  (Prod. Chris Nolan)",
+                    "uploader": "Ghali",
+                    "download_link": "http://converterapi.local/download/nLXi0eaNo57p5OCmqqGoqLbQxqG249yh5MrslJpyqn622b2DzejCxt-rZQ",
+                    "thumbnail": "https://i.ytimg.com/vi/HxJ0YyPYv34/maxresdefault.jpg",
+                    "formats": [...]
+                }
             }
+
++ Response 200 (application/json)
+
+    + Body
+        
+            {
+                "status": "fail or error",
+                "data": {
+                    "code": "xxx", #3 digit error code - check readme.
+                    "message": "Some details about the error."
+                }
+            }
+
+## Supported sites list [/supported]
+
+Fetches all the officially supported sites. Same as those supported by Youtube-DL.
+
+### List all Supported Sites [GET]
+
+Returns an array of all supported sites.
+
++ Response 200 (application/json)
+
+    + Schema
+
+            [
+                "site1",
+                "site2",
+                ...
+            ]
+
+    + Body
+
+            [
+                "site1",
+                "site2",
+                ...
+            ]
+
+## Fetch available download formats [/download/id/formats]
+
+Fetched the available formats for the download identified by "id".
+
+### Fetch available download formats [GET]
+
+Returns an array of all the available formats.
+
++ Response 200 (application/json)
+
+    + Schema
+
+            [
+                {
+                    "format_id": "",
+                    "extention": "",
+                    "description": "",
+                    "download_link": "http://converterapi.local/v1/download/id/139"
+                },
+                ...
+            ]
+
+    + Body
+
+            [
+                {
+                    "format_id": "139",
+                    "extention": "m4a",
+                    "description": "audio only (DASH audio)",
+                    "download_link": "http://converterapi.local/v1/download/id/139"
+                },
+                {
+                    "format_id": "249",
+                    "extention": "webm",
+                    "description": "audio only (DASH audio)",
+                    "download_link": "http://converterapi.local/v1/download/id/249"
+                },
+                {
+                    "format_id": "250",
+                    "extention": "webm",
+                    "description": "audio only (DASH audio)",
+                    "download_link": "http://converterapi.local/v1/download/id/250"
+                },
+                {
+                    "format_id": "140",
+                    "extention": "m4a",
+                    "description": "audio only (DASH audio)",
+                    "download_link": "http://converterapi.local/v1/download/id/140"
+                },
+                {
+                    "format_id": "171",
+                    "extention": "webm",
+                    "description": "audio only (DASH audio)",
+                    "download_link": "http://converterapi.local/v1/download/id/171"
+                },
+                {
+                    "format_id": "251",
+                    "extention": "webm",
+                    "description": "audio only (DASH audio)",
+                    "download_link": "http://converterapi.local/v1/download/id/251"
+                },
+                {
+                    "format_id": "160",
+                    "extention": "mp4",
+                    "description": "256x144 (DASH video)",
+                    "download_link": "http://converterapi.local/v1/download/id/160"
+                },
+                {
+                    "format_id": "278",
+                    "extention": "webm",
+                    "description": "256x144 (144p)",
+                    "download_link": "http://converterapi.local/v1/download/id/278"
+                },
+                {
+                    "format_id": "133",
+                    "extention": "mp4",
+                    "description": "426x240 (DASH video)",
+                    "download_link": "http://converterapi.local/v1/download/id/133"
+                },
+                {
+                    "format_id": "242",
+                    "extention": "webm",
+                    "description": "426x240 (240p)",
+                    "download_link": "http://converterapi.local/v1/download/id/242"
+                },
+                {
+                    "format_id": "134",
+                    "extention": "mp4",
+                    "description": "640x360 (DASH video)",
+                    "download_link": "http://converterapi.local/v1/download/id/134"
+                },
+                {
+                    "format_id": "243",
+                    "extention": "webm",
+                    "description": "640x360 (360p)",
+                    "download_link": "http://converterapi.local/v1/download/id/243"
+                },
+                {
+                    "format_id": "244",
+                    "extention": "webm",
+                    "description": "854x480 (480p)",
+                    "download_link": "http://converterapi.local/v1/download/id/244"
+                },
+                {
+                    "format_id": "135",
+                    "extention": "mp4",
+                    "description": "854x480 (DASH video)",
+                    "download_link": "http://converterapi.local/v1/download/id/135"
+                },
+                {
+                    "format_id": "136",
+                    "extention": "mp4",
+                    "description": "1280x720 (DASH video)",
+                    "download_link": "http://converterapi.local/v1/download/id/136"
+                },
+                {
+                    "format_id": "247",
+                    "extention": "webm",
+                    "description": "1280x720 (720p)",
+                    "download_link": "http://converterapi.local/v1/download/id/247"
+                },
+                {
+                    "format_id": "137",
+                    "extention": "mp4",
+                    "description": "1920x1080 (DASH video)",
+                    "download_link": "http://converterapi.local/v1/download/id/137"
+                },
+                {
+                    "format_id": "248",
+                    "extention": "webm",
+                    "description": "1920x1080 (1080p)",
+                    "download_link": "http://converterapi.local/v1/download/id/248"
+                },
+                {
+                    "format_id": "17",
+                    "extention": "3gp",
+                    "description": "176x144 (small)",
+                    "download_link": "http://converterapi.local/v1/download/id/17"
+                },
+                {
+                    "format_id": "36",
+                    "extention": "3gp",
+                    "description": "320x180 (small)",
+                    "download_link": "http://converterapi.local/v1/download/id/36"
+                },
+                {
+                    "format_id": "43",
+                    "extention": "webm",
+                    "description": "640x360 (medium)",
+                    "download_link": "http://converterapi.local/v1/download/id/43"
+                },
+                {
+                    "format_id": "18",
+                    "extention": "mp4",
+                    "description": "640x360 (medium)",
+                    "download_link": "http://converterapi.local/v1/download/id/18"
+                },
+                {
+                    "format_id": "22",
+                    "extention": "mp4",
+                    "description": "1280x720 (hd720)",
+                    "download_link": "http://converterapi.local/v1/download/id/22"
+                },
+                {
+                    "format_id": "999",
+                    "extention": "mp3",
+                    "description": "MP3 audio",
+                    "download_link": "http://converterapi.local/v1/download/id/999"
+                }
+            ]

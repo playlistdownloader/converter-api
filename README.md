@@ -8,18 +8,27 @@ A powerful PHP API for media download & conversion (Work in progress)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/stormiix/converter-api/issues)
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/Stormiix/converter-api.svg?style=flat)](https://twitter.com/intent/tweet?text=Check%20this%20out%20%40Stormix4:&url=https%3A%2F%2Fgithub.com%2FStormiix%2Fconverter-api)
 
+## Features 
+ 
+ + Supports +880 streaming/video sites
+ + Supports auto ID3 Tagging for MP3 Files
+ + ..
+ 
 ## Getting Started
 
 Converter-API is a PHP api that serves as a backend to my website: [PlaylistConverter](https://playlist-converter.me/?github).
 It can be used to create streaming sites "Downloaders/Converters". It uses Youtube-DL to fetch json info about each download such as (Title,description,available formats..etc).
 
+Live documentation : [Converter API Docs](https://converterapi.docs.apiary.io/).
+
 ### Prerequisites
 
 In order to use converter-api you must have the following :
 
-- Youtube-DL [Download Here](https://github.com/rg3/youtube-dl/)
+- Youtube-DL [Download Here](https://github.com/rg3/youtube-dl/) and all it's prerequisites.
 - A Deezer developer API Key
 - A Google API Key
+- A last.fm API Key
 - That's it :D
 
 ### Installing

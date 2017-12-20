@@ -55,6 +55,11 @@ if($devMode){
     error_reporting(E_ALL);
 }
 
+// Redis caching : Connecting to Redis server on localhost 
+
+$redis = new Redis(); 
+$redis->connect('127.0.0.1', 6379); 
+
 /*
  *  START REAL CONFIGURATION HERE
  *      EDIT ONLY IF IT'S
