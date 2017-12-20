@@ -282,7 +282,7 @@ function downloadFile($link,$format,$ext,$audio){
         }else{
             if($format == "9999"){
                 incrementConversions();
-                $cmd = 'youtube-dl -f "bestvideo+bestaudio[ext=m4a]/bestvideo+bestaudio/best"  --merge-output-format mp4 --output '.$downloadFolder.'/"'.$id.'-delete.%(ext)s" '.$link;
+                $cmd = 'youtube-dl -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio/best"  --merge-output-format mp4 --output '.$downloadFolder.'/"'.$id.'-delete.%(ext)s" '.$link;
             }else{
                 incrementDownloads();
                 $cmd = 'youtube-dl -f '.$format.' --output '.$downloadFolder.'/"'.$id.'-delete.%(ext)s" '.$link;
