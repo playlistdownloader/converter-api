@@ -98,7 +98,7 @@ $this->respond('GET', '/[:id]/[i:format_id]', function ($request, $response, $se
             $audio = ($request->format_id == "999" ? true : false);
             $download_link = downloadFile($downloadInfoData['webpage_url'],$request->format_id,$ext,$audio);
             $filename = $downloadInfoData['title'];
-            $size = filesize($_SERVER["DOCUMENT_ROOT"].$download_link);
+            $size = filesize($_SERVER["DOCUMENT_ROOT"]."/".$download_link);
             // Count finished downloads ;)
             incrementFinished();
             decrementUnfinished();
