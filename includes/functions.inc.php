@@ -280,9 +280,13 @@ function downloadFile($link,$format,$ext,$audio){
             incrementConversions();
             $cmd = 'youtube-dl --add-metadata --extract-audio --audio-format mp3  --output '.$downloadFolder.'/"'.$id.'-delete.%(ext)s" '.$link;
         }else{
-            incrementDownloads();
-            $cmd = 'youtube-dl -f '.$format.' --output '.$downloadFolder.'/"'.$id.'-delete.%(ext)s" '.$link;
-        }
+            if($format == "9999"){
+                incrementConversions();
+                $cmd = 'youtube-dl -f "bestvideo+bestaudio[ext=m4a]/bestvideo+bestaudio/best"  --merge-output-format mp4 --output '.$downloadFolder.'/"'.$id.'-delete.%(ext)s" '.$link;
+            }else{
+                incrementDownloads();
+                $cmd = 'youtube-dl -f '.$format.' --output '.$downloadFolder.'/"'.$id.'-delete.%(ext)s" '.$link;
+            }}
 		$excecute = shell_exec($cmd);
 		return $output;
 	}

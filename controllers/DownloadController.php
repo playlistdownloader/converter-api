@@ -52,6 +52,12 @@ $this->respond('GET', '/[:id]/formats', function ($request, $response, $service)
             "description" => "MP3 audio",
             "download_link" => $_ENV['APP_URL'].$_ENV['VERSION']."/download/".$id."/999"
         ];
+        $response[] = [
+            "format_id" => "9999",
+            "extention" => "mp4",
+            "description" => "Best Audio + Best Video",
+            "download_link" => $_ENV['APP_URL'].$_ENV['VERSION']."/download/".$id."/9999"
+        ];
         return Json::encode($response);
     }
 });
@@ -75,17 +81,19 @@ $this->respond('GET', '/[:id]/[i:format_id]', function ($request, $response, $se
         #It's not a playlist
         $downloadInfoData = $downloadInfo['data'];
         // For faster treatement, let's fetch the formats from the database:
-        if($request->format_id != "999"){
+        if($request->format_id == "999"){
+            $formats['999'] = "mp3";
+        }elseif($request->format_id == "9999"){
+            $formats['999'] = "mp4";
+        }else{
             foreach($downloadInfoData['formats'] as $format){
                 $formatID = $format['format_id'];
                 $formatExt = $format['ext'];
                 $formats[$formatID] = $formatExt;
             }
-        }else{
-            $formats['999'] = "mp3";
         }
         
-        if(array_key_exists($request->format_id,$formats) || $request->format_id == "999"){
+        if(array_key_exists($request->format_id,$formats) || $request->format_id == "999" || $request->format_id == "9999" ){
             $ext = $formats[$request->format_id];
             $audio = ($request->format_id == "999" ? true : false);
             $download_link = downloadFile($downloadInfoData['webpage_url'],$request->format_id,$ext,$audio);
