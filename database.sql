@@ -1,9 +1,6 @@
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
-
+-- Converter API (https://github.com/Stormiix/converter-api)
+-- Copyright (c) Stormix (https://www.stormix.co/)
+-- Licensed under the MIT License (https://opensource.org/licenses/MIT)
 
 --
 -- Table structure for table `api_keys`
@@ -33,7 +30,7 @@ CREATE TABLE `downloads` (
   `id` int(11) NOT NULL,
   `response_id` text NOT NULL,
   `response` longtext NOT NULL,
-  `created_at` datetime DEFAULT current_timestamp(),
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `timestamp` varchar(300) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
